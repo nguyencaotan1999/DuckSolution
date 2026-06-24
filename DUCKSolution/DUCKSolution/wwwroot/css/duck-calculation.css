@@ -1,0 +1,190 @@
+/*
+ * Duck export calculation page styling.
+ * Place: wwwroot/css/duck-calculation.css  (linked from DuckCalculationPage.cshtml).
+ */
+:root {
+    --duck-accent: #2563eb;
+    --duck-accent-soft: #eff4ff;
+    --duck-border: #e2e8f0;
+    --duck-header-bg: #1e293b;
+    --duck-header-text: #f8fafc;
+    --duck-radius: 12px;
+    --duck-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+}
+
+.duck-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 3rem;
+}
+
+.duck-page__header {
+    margin-bottom: 1.25rem;
+}
+
+.duck-page__title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0;
+}
+
+.duck-page__subtitle {
+    color: #64748b;
+    margin: 0.25rem 0 0;
+    font-size: 0.95rem;
+}
+
+/* ---- Global parameter inputs ---- */
+.duck-params {
+    background: #fff;
+    border: 1px solid var(--duck-border);
+    border-radius: var(--duck-radius);
+    box-shadow: var(--duck-shadow);
+    padding: 1.1rem 1.25rem;
+    margin-bottom: 1.25rem;
+}
+
+.duck-params__label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #475569;
+    margin-bottom: 0.35rem;
+}
+
+/* ---- Toolbar above the table ---- */
+.duck-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.duck-toolbar__hint {
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+/* ---- Scrollable table container ---- */
+.duck-table-wrap {
+    height: 300px;            /* fixed height */
+    width: 100%;              /* full width */
+    overflow-y: auto;         /* vertical scrollbar when content overflows */
+    border: 1px solid var(--duck-border);
+    border-radius: var(--duck-radius);
+    box-shadow: var(--duck-shadow);
+    background: #fff;
+}
+
+.duck-table {
+    width: 100%;
+    table-layout: fixed;
+    /* keeps the 8 columns readable; wrapper scrolls horizontally if needed */
+}
+
+/* Sticky header stays visible while scrolling */
+.duck-table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: var(--duck-header-bg);
+    color: var(--duck-header-text);
+    font-weight: 600;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0.75rem 0.6rem;
+    border-color: #334155;
+}
+
+.duck-table tbody td {
+    text-align: center;
+    padding: 0.45rem 0.5rem;
+}
+
+.duck-table tbody tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+/* Computed columns get a subtle highlight */
+.duck-row__weight,
+.duck-row__ducks {
+    font-weight: 600;
+    color: var(--duck-accent);
+    background: var(--duck-accent-soft);
+}
+
+/* STT cell: number + remove button */
+.duck-row__index {
+    white-space: nowrap;
+}
+
+.duck-row__no {
+    font-weight: 600;
+    color: #475569;
+    margin-right: 0.4rem;
+}
+
+.duck-input {
+    text-align: center;
+    min-width: 20px;
+}
+
+.duck-input:focus {
+    border-color: var(--duck-accent);
+    box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.15);
+}
+
+/* ---- Summary panel ---- */
+.duck-summary {
+    position: sticky;
+    top: 1rem;
+    background: #fff;
+    border: 1px solid var(--duck-border);
+    border-radius: var(--duck-radius);
+    box-shadow: var(--duck-shadow);
+    padding: 1.25rem;
+}
+
+.duck-summary__title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--duck-border);
+}
+
+.duck-summary__field + .duck-summary__field {
+    margin-top: 1rem;
+}
+
+.duck-summary__label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #64748b;
+    margin-bottom: 0.35rem;
+}
+
+.duck-summary__value {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--duck-accent);
+    background: var(--duck-accent-soft);
+    border-color: #dbe4ff;
+    text-align: center;
+}
+
+.duck-summary__value:focus {
+    background: var(--duck-accent-soft);
+    box-shadow: none;
+}
+
+@media (max-width: 991.98px) {
+    .duck-summary {
+        position: static;
+    }
+}
+

@@ -1,0 +1,57 @@
+@*
+    Reusable sidebar navigation partial.
+    Place: Views/Shared/_Sidebar.cshtml
+    Rendered from _Layout.cshtml via @await Html.PartialAsync("_Sidebar").
+
+    - English IDs/classes, Vietnamese display labels.
+    - Links use asp-controller/asp-action tag helpers so they integrate with MVC routing.
+      Only Home/Index exists today; the others are placeholders — create the matching
+      controllers/actions (Cage, Export, Account) or repoint these links as needed.
+    - Active highlighting is applied client-side in sidebar.ts (matches the current URL),
+      so no server-side logic is required here.
+*@
+<aside class="app-sidebar" id="appSidebar" aria-label="Main navigation">
+    <div class="app-sidebar__brand">
+        <i class="bi bi-egg-fried app-sidebar__brand-icon"></i>
+        <span class="app-sidebar__brand-text">Trại Vịt nhà Ba</span>
+    </div>
+
+    <nav class="app-sidebar__nav" aria-label="Sidebar">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link sidebar-link" asp-controller="Home" asp-action="HomePage">
+                    <i class="bi bi-house-door"></i>
+                    <span>Trang Chủ</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link sidebar-link" asp-controller="Home" asp-action="Index">
+                    <i class="bi bi-grid-3x3-gap"></i>
+                    <span>Tính lồng</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link sidebar-link" asp-controller="Admin" asp-action="DuckCalculationPage">
+                    <i class="bi bi-clipboard-data"></i>
+                    <span>Tính vịt xuất chuồng</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link sidebar-link" asp-controller="Admin" asp-action="SignInPage">
+                    <i class="bi bi-box-arrow-in-right"></i>
+                    <span>Đăng nhập</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link sidebar-link" asp-controller="Admin" asp-action="SignUpPage">
+                    <i class="bi bi-person-plus"></i>
+                    <span>Đăng ký</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="app-sidebar__footer">
+        <small>© @DateTime.Now.Year Trại Vịt nhà Ba</small>
+    </div>
+</aside>

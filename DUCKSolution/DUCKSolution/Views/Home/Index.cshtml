@@ -1,0 +1,54 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<link rel="stylesheet" href="~/css/export-calculation.css" asp-append-version="true" />
+
+<div class="cage-page">
+    <header class="cage-page__header">
+        <h1 class="cage-page__title">Bảng tính Vịt xuất chuồng</h1>
+        <p class="cage-page__subtitle">Nhập số lồng và số ký cho từng dòng — tổng được tính tự động.</p>
+    </header>
+
+    <div class="row g-4">
+        <div class="col-12 col-lg-8">
+            <div class="cage-toolbar">
+                <button id="addRowBtn" class="btn btn-primary" type="button">
+                    <i class="bi bi-plus-lg"></i> Thêm dòng
+                </button>
+                <span class="cage-toolbar__hint">Số dòng: <strong id="rowCount">0</strong></span>
+            </div>
+
+            <div class="cage-table-wrap">
+                <table class="table table-bordered table-hover cage-table mb-0">
+                    <thead>
+                        <tr>
+                            <th class="cage-col-no" scope="col">STT</th>
+                            <th scope="col">Số Lồng</th>
+                            <th scope="col">Số Ký</th>
+                            <th class="cage-col-action" scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="cageTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-4">
+            <div class="cage-summary">
+                <h2 class="cage-summary__title">Tổng kết</h2>
+
+                <div class="cage-summary__field">
+                    <label for="totalCageNumber" class="cage-summary__label">Tổng số Lồng</label>
+                    <input id="totalCageNumber" class="form-control cage-summary__value" type="number" value="0"
+                           readonly />
+                </div>
+
+                <div class="cage-summary__field">
+                    <label for="totalWeight" class="cage-summary__label">Tổng số Ký</label>
+                    <input id="totalWeight" class="form-control cage-summary__value" type="number" value="0" readonly />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "none",
+    "ignoreDeprecations": "6.0",
+    "outFile": "wwwroot/js/export-calculation.js",
+    "rootDir": "wwwroot/ts",
+    "strict": true,
+    "removeComments": true,
+    "sourceMap": true
+  },
+  "include": [
+    "wwwroot/ts/**/*.ts"
+  ]
+}

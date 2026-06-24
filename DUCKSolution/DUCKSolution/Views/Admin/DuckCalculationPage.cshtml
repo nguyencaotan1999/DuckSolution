@@ -1,0 +1,77 @@
+@{
+    ViewData["Title"] = "Tính vịt xuất chuồng";
+}
+
+<link rel="stylesheet" href="~/css/duck-calculation.css" asp-append-version="true" />
+
+<div class="duck-page">
+    <header class="duck-page__header">
+        <h1 class="duck-page__title">Tính vịt xuất chuồng</h1>
+        <p class="duck-page__subtitle">Tổng ký và tổng số vịt được tính tự động.</p>
+    </header>
+
+    @* ---- Global parameters (outside the table) ---- *@
+    <div class="duck-params">
+        <div class="row g-3">
+            <div class="col-12 col-sm-6 col-lg-4">
+                <label for="ducksPerCage" class="duck-params__label">Số con vịt trong lồng</label>
+                <input id="ducksPerCage" class="form-control" type="number" min="0" step="1" value="0" placeholder="0" />
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4">
+                <label for="cagesPerWeighing" class="duck-params__label">Số lồng 1 lần cân</label>
+                <input id="cagesPerWeighing" class="form-control" type="number" min="0" step="1" value="0" placeholder="0" />
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4">
+                <label for="totalBoxKg" class="duck-params__label">Tổng số ký Lồng</label>
+                <input id="totalBoxKg" class="form-control" type="number" min="0" step="1" value="0" placeholder="0" disabled  />
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-12 col-lg-9">
+            <div class="duck-toolbar">
+                <button id="duckAddRowBtn" class="btn btn-primary" type="button">
+                    <i class="bi bi-plus-lg"></i> Thêm dòng
+                </button>
+                <span class="duck-toolbar__hint">Số dòng: <strong id="duckRowCount">0</strong></span>
+            </div>
+
+            @* ---- Scrollable 8-column table ---- *@
+            <div class="duck-table-wrap">
+                <table class="table table-bordered table-hover duck-table mb-0">
+                    <thead>
+                        <tr >
+                            <th scope="col" >STT</th>
+                            <th scope="col" style="width:15%">Mã 1</th>
+                            <th scope="col" style="width:15%">Mã 2</th>
+                            <th scope="col" style="width:15%">Mã 3</th>
+                            <th scope="col" style="width:15%">Mã 4</th>
+                            <th scope="col" style="width:15%">Mã 5</th>
+                            <th scope="col" >Tổng ký 5 mã</th>
+                            <th scope="col" >Tổng số vịt 5 mã</th>
+                        </tr>
+                    </thead>
+                    <tbody id="duckTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        @* ---- Summary fields (outside the table) ---- *@
+        <div class="col-12 col-lg-3">
+            <div class="duck-summary">
+                <h2 class="duck-summary__title">Tổng kết</h2>
+
+                <div class="duck-summary__field">
+                    <label for="totalWeight" class="duck-summary__label">Tổng ký</label>
+                    <input id="totalWeight" class="form-control duck-summary__value" type="number" value="0" readonly />
+                </div>
+
+                <div class="duck-summary__field">
+                    <label for="totalDucks" class="duck-summary__label">Tổng số vịt</label>
+                    <input id="totalDucks" class="form-control duck-summary__value" type="number" value="0" readonly />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

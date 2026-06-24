@@ -1,0 +1,170 @@
+:root {
+    --cage-accent: #2563eb;
+    --cage-accent-soft: #eff4ff;
+    --cage-border: #e2e8f0;
+    --cage-header-bg: #1e293b;
+    --cage-header-text: #f8fafc;
+    --cage-radius: 12px;
+    --cage-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+}
+
+.cage-page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 3rem;
+}
+
+.cage-page__header {
+    margin-bottom: 1.5rem;
+}
+
+.cage-page__title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0;
+}
+
+.cage-page__subtitle {
+    color: #64748b;
+    margin: 0.25rem 0 0;
+    font-size: 0.95rem;
+}
+
+/* ---- Toolbar above the table ---- */
+.cage-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.cage-toolbar__hint {
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+/* ---- Scrollable table container ---- */
+.cage-table-wrap {
+    height: 400px;            /* fixed height */
+    width: 100%;              /* full width */
+    overflow-y: auto;         /* vertical scrollbar when content overflows */
+    border: 1px solid var(--cage-border);
+    border-radius: var(--cage-radius);
+    box-shadow: var(--cage-shadow);
+    background: #fff;
+}
+
+.cage-table {
+    margin: 0;
+    vertical-align: middle;
+}
+
+/* Sticky header so columns stay visible while scrolling */
+.cage-table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: var(--cage-header-bg);
+    color: var(--cage-header-text);
+    font-weight: 600;
+    text-align: center;
+    padding: 0.85rem 0.75rem;
+    border-color: #334155;
+}
+
+.cage-table tbody td {
+    text-align: center;
+    padding: 0.5rem 0.6rem;
+}
+
+.cage-table tbody tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+.cage-col-no {
+    width: 90px;
+}
+
+.cage-col-action {
+    width: 70px;
+}
+
+.cage-row__index {
+    font-weight: 600;
+    color: #475569;
+}
+
+/* ---- Inputs ---- */
+.cage-input {
+    text-align: center;
+}
+
+.cage-input:focus {
+    border-color: var(--cage-accent);
+    box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.15);
+}
+
+.cage-row__remove {
+    --bs-btn-padding-x: 0.5rem;
+    --bs-btn-padding-y: 0.25rem;
+    line-height: 1;
+}
+
+/* ---- Summary panel ---- */
+.cage-summary {
+    position: sticky;
+    top: 1rem;
+    background: #fff;
+    border: 1px solid var(--cage-border);
+    border-radius: var(--cage-radius);
+    box-shadow: var(--cage-shadow);
+    padding: 1.25rem;
+}
+
+.cage-summary__title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--cage-border);
+}
+
+.cage-summary__field + .cage-summary__field {
+    margin-top: 1rem;
+}
+
+.cage-summary__label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #64748b;
+    margin-bottom: 0.35rem;
+}
+
+.cage-summary__value {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--cage-accent);
+    background: var(--cage-accent-soft);
+    border-color: #dbe4ff;
+    text-align: center;
+}
+
+.cage-summary__value:focus {
+    background: var(--cage-accent-soft);
+    box-shadow: none;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 991.98px) {
+    .cage-summary {
+        position: static;
+    }
+
+    .cage-table-wrap {
+        height: 60vh;
+    }
+}
