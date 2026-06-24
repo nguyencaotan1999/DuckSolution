@@ -304,10 +304,6 @@ var DuckCalculation;
             row.innerHTML = `
                 <td class="duck-row__index">
                     <span class="duck-row__no"></span>
-                    <button type="button" class="btn btn-sm btn-outline-danger duck-row__remove"
-                            aria-label="Xóa dòng" title="Xóa dòng">
-                        <i class="bi bi-trash"></i>
-                    </button>
                 </td>
                 ${codeCells}
                 <td class="duck-row__weight">0</td>
