@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|c:\\users\\tnguyen739\\onedrive - dxc production\\desktop\\project\\duck\\ducksolution\\ducksolution\\ducksolution\\views\\admin\\boxcalculationpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|solutionrelative:ducksolution\\views\\admin\\boxcalculationpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|c:\\users\\tnguyen739\\onedrive - dxc production\\desktop\\project\\duck\\ducksolution\\ducksolution\\ducksolution\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|solutionrelative:ducksolution\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -17,10 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|c:\\users\\tnguyen739\\onedrive - dxc production\\desktop\\project\\duck\\ducksolution\\ducksolution\\ducksolution\\views\\shared\\_sidebar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|solutionrelative:ducksolution\\views\\shared\\_sidebar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|c:\\users\\tnguyen739\\onedrive - dxc production\\desktop\\project\\duck\\ducksolution\\ducksolution\\ducksolution\\views\\admin\\boxcalculationpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|solutionrelative:ducksolution\\views\\admin\\boxcalculationpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|c:\\users\\tnguyen739\\onedrive - dxc production\\desktop\\project\\duck\\ducksolution\\ducksolution\\ducksolution\\wwwroot\\ts\\duck-calculation.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
@@ -150,17 +150,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 15,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "BoxCalculationPage.cshtml",
               "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Views\\Admin\\BoxCalculationPage.cshtml",
               "RelativeDocumentMoniker": "DUCKSolution\\Views\\Admin\\BoxCalculationPage.cshtml",
               "ToolTip": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Views\\Admin\\BoxCalculationPage.cshtml",
               "RelativeToolTip": "DUCKSolution\\Views\\Admin\\BoxCalculationPage.cshtml",
-              "ViewState": "AgIAACcAAAAAAAAAAAAAADgAAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAABwAAAAAAAAAAAAAAC4AAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-06-23T15:28:11.742Z",
               "IsPinned": true,
@@ -248,7 +248,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "DUCKSolution\\Controllers\\HomeController.cs",
@@ -261,20 +261,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Program.cs",
               "RelativeDocumentMoniker": "DUCKSolution\\Program.cs",
               "ToolTip": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Program.cs",
               "RelativeToolTip": "DUCKSolution\\Program.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAAB8AAABEAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAAACMAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-23T15:29:15.782Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "AdminController.cs",
               "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "DUCKSolution\\Controllers\\AdminController.cs",
@@ -287,7 +287,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "_Sidebar.cshtml",
               "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Views\\Shared\\_Sidebar.cshtml",
               "RelativeDocumentMoniker": "DUCKSolution\\Views\\Shared\\_Sidebar.cshtml",

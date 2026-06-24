@@ -1014,7 +1014,6 @@ C:\Users\tnguyen739\OneDrive - DXC Production\Desktop\Project\DUCK\DuckSolution\
 C:\Users\tnguyen739\OneDrive - DXC Production\Desktop\Project\DUCK\DuckSolution\DUCKSolution\DUCKSolution\obj\Debug\net10.0\compressed\ne9qwhkyle-{0}-0r11xc8la1-0r11xc8la1.gz
 C:\Users\tnguyen739\OneDrive - DXC Production\Desktop\Project\DUCK\DuckSolution\DUCKSolution\DUCKSolution\obj\Debug\net10.0\compressed\eeyf3qkoc9-{0}-3698tyab0r-3698tyab0r.gz
 C:\Users\tnguyen739\OneDrive - DXC Production\Desktop\Project\DUCK\DuckSolution\DUCKSolution\DUCKSolution\obj\Debug\net10.0\compressed\m05nw1m8js-{0}-61n19gt1b8-61n19gt1b8.gz
-C:\Users\tnguyen739\OneDrive - DXC Production\Desktop\Project\DUCK\DuckSolution\DUCKSolution\DUCKSolution\obj\Debug\net10.0\compressed\jai3yy3hui-{0}-s35e0sg4lz-s35e0sg4lz.gz
 C:\Users\tnguyen739\OneDrive - DXC Production\Desktop\Project\DUCK\DuckSolution\DUCKSolution\DUCKSolution\obj\Debug\net10.0\compressed\bjkegy0a6q-{0}-5xp0lxx6nq-5xp0lxx6nq.gz
 C:\Users\tnguyen739\OneDrive - DXC Production\Desktop\Project\DUCK\DuckSolution\DUCKSolution\DUCKSolution\obj\Debug\net10.0\compressed\th64cwaurx-{0}-bqjiyaj88i-bqjiyaj88i.gz
 C:\Users\tnguyen739\OneDrive - DXC Production\Desktop\Project\DUCK\DuckSolution\DUCKSolution\DUCKSolution\obj\Debug\net10.0\compressed\ushjur1keb-{0}-c2jlpeoesf-c2jlpeoesf.gz
@@ -1082,7 +1081,6 @@ C:\Users\tnguyen739\OneDrive - DXC Production\Desktop\Project\DUCK\DuckSolution\
 C:\Users\tnguyen739\OneDrive - DXC Production\Desktop\Project\DUCK\DuckSolution\DUCKSolution\DUCKSolution\obj\Debug\net10.0\staticwebassets.development.json
 C:\Users\tnguyen739\OneDrive - DXC Production\Desktop\Project\DUCK\DuckSolution\DUCKSolution\DUCKSolution\obj\Debug\net10.0\staticwebassets.build.endpoints.json
 C:\Users\tnguyen739\OneDrive - DXC Production\Desktop\Project\DUCK\DuckSolution\DUCKSolution\DUCKSolution\obj\Debug\net10.0\swae.build.ex.cache
-C:\Users\tnguyen739\OneDrive - DXC Production\Desktop\Project\DUCK\DuckSolution\DUCKSolution\DUCKSolution\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
 C:\Users\tnguyen739\OneDrive - DXC Production\Desktop\Project\DUCK\DuckSolution\DUCKSolution\DUCKSolution\obj\Debug\net10.0\DUCKSolu.40CF08E1.Up2Date
 C:\Users\tnguyen739\OneDrive - DXC Production\Desktop\Project\DUCK\DuckSolution\DUCKSolution\DUCKSolution\obj\Debug\net10.0\DUCKSolution.dll
 C:\Users\tnguyen739\OneDrive - DXC Production\Desktop\Project\DUCK\DuckSolution\DUCKSolution\DUCKSolution\obj\Debug\net10.0\refint\DUCKSolution.dll
@@ -1091,3 +1089,5 @@ C:\Users\tnguyen739\OneDrive - DXC Production\Desktop\Project\DUCK\DuckSolution\
 C:\Users\tnguyen739\OneDrive - DXC Production\Desktop\Project\DUCK\DuckSolution\DUCKSolution\DUCKSolution\obj\Debug\net10.0\ref\DUCKSolution.dll
 C:\Users\tnguyen739\OneDrive - DXC Production\Desktop\Project\DUCK\DuckSolution\DUCKSolution\DUCKSolution\obj\Debug\net10.0\DUCKSolution.sourcelink.json
 C:\Users\tnguyen739\OneDrive - DXC Production\Desktop\Project\DUCK\DuckSolution\DUCKSolution\DUCKSolution\obj\Debug\net10.0\compressed\w2pj0xe0xo-{0}-7x788o377x-7x788o377x.gz
+C:\Users\tnguyen739\OneDrive - DXC Production\Desktop\Project\DUCK\DuckSolution\DUCKSolution\DUCKSolution\obj\Debug\net10.0\compressed\jai3yy3hui-{0}-adpjao1hg0-adpjao1hg0.gz
+C:\Users\tnguyen739\OneDrive - DXC Production\Desktop\Project\DUCK\DuckSolution\DUCKSolution\DUCKSolution\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt

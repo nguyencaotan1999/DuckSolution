@@ -4,6 +4,10 @@
 
 <link rel="stylesheet" href="~/css/export-calculation.css" asp-append-version="true" />
 
+@* Anti-forgery token: read by box-calculation.ts and sent as the
+   RequestVerificationToken header when POSTing to /Admin/SaveBoxData. *@
+@Html.AntiForgeryToken()
+
 <div class="cage-page">
     <header class="cage-page__header">
         <div class="row">
@@ -13,8 +17,8 @@
             </div>
             <div class="col-6">
                 <div class="row">
-                    <div class="col-6"><input class="form-control" type="text" name="name" value="" placeholder="Nhập mã đơn hàng....." maxlength="10" /></div>
-                    <div class="col-6"><input class="btn btn-primary" type="button" value="Lấy dữ liệu" /></div>
+                    <div class="col-6"><input id="orderCode" class="form-control" type="text" name="name" value="" placeholder="Nhập mã đơn hàng....." maxlength="50" autocomplete="off" /></div>
+                    <div class="col-6"><input id="fetchDataBtn" class="btn btn-primary" type="button" value="Lấy dữ liệu" /></div>
                 </div>
                 
             </div>
@@ -22,13 +26,14 @@
         
     </header>
 
-    <div class="row g-4">
+    @* Hidden until a successful fetch; box-calculation.ts toggles d-none. *@
+    <div id="boxPanel" class="row g-4 d-none">
         <div class="col-12 col-lg-8">
             <div class="cage-toolbar">
-                <button id="addRowBtn" class="btn btn-primary" type="button">
+                <button id="boxAddRowBtn" class="btn btn-primary" type="button">
                     <i class="bi bi-plus-lg"></i> Thêm dòng
                 </button>
-                <span class="cage-toolbar__hint">Số dòng: <strong id="rowCount">0</strong></span>
+                <span class="cage-toolbar__hint">Số dòng: <strong id="boxRowCount">0</strong></span>
             </div>
 
             <div class="cage-table-wrap">
@@ -41,7 +46,7 @@
                             <th class="cage-col-action" scope="col"></th>
                         </tr>
                     </thead>
-                    <tbody id="cageTableBody"></tbody>
+                    <tbody id="boxTableBody"></tbody>
                 </table>
             </div>
         </div>
@@ -51,19 +56,22 @@
                 <h2 class="cage-summary__title">Tổng kết</h2>
 
                 <div class="cage-summary__field">
-                    <label for="totalCageNumber" class="cage-summary__label">Tổng số Lồng</label>
-                    <input id="totalCageNumber" class="form-control cage-summary__value" type="number" value="0"
+                    <label for="totalBox" class="cage-summary__label">Tổng số Lồng</label>
+                    <input id="totalBox" class="form-control cage-summary__value" type="number" value="0"
                            readonly />
                 </div>
 
                 <div class="cage-summary__field">
-                    <label for="totalWeight" class="cage-summary__label">Tổng số Ký</label>
-                    <input id="totalWeight" class="form-control cage-summary__value" type="number" value="0" readonly />
+                    <label for="totalBoxKg" class="cage-summary__label">Tổng số Ký</label>
+                    <input id="totalBoxKg" class="form-control cage-summary__value" type="number" value="0" readonly />
                 </div>
                 <div class="cage-summary__field">
-                    <input class="btn btn-primary" type="button" value="Lưu dữ liệu" />
+                    <input id="saveDataBtn" class="btn btn-primary" type="button" value="Lưu dữ liệu" />
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@* Toast host (Bootstrap toasts are injected here by box-calculation.ts) *@
+<div id="toastContainer" class="toast-container position-fixed bottom-0 end-0 p-3"></div>
