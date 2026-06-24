@@ -3,16 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|c:\\users\\tnguyen739\\onedrive - dxc production\\desktop\\project\\duck\\ducksolution\\ducksolution\\ducksolution\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|solutionrelative:ducksolution\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|c:\\users\\tnguyen739\\onedrive - dxc production\\desktop\\project\\duck\\ducksolution\\ducksolution\\ducksolution\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|solutionrelative:ducksolution\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|c:\\users\\tnguyen739\\onedrive - dxc production\\desktop\\project\\duck\\ducksolution\\ducksolution\\ducksolution\\wwwroot\\ts\\box-calculation.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|solutionrelative:ducksolution\\wwwroot\\ts\\box-calculation.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|c:\\users\\tnguyen739\\onedrive - dxc production\\desktop\\project\\duck\\ducksolution\\ducksolution\\ducksolution\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|solutionrelative:ducksolution\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|c:\\users\\tnguyen739\\onedrive - dxc production\\desktop\\project\\duck\\ducksolution\\ducksolution\\ducksolution\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|solutionrelative:ducksolution\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|c:\\users\\tnguyen739\\onedrive - dxc production\\desktop\\project\\duck\\ducksolution\\ducksolution\\ducksolution\\views\\shared\\_sidebar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|solutionrelative:ducksolution\\views\\shared\\_sidebar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|c:\\users\\tnguyen739\\onedrive - dxc production\\desktop\\project\\duck\\ducksolution\\ducksolution\\ducksolution\\views\\admin\\boxcalculationpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|solutionrelative:ducksolution\\views\\admin\\boxcalculationpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|c:\\users\\tnguyen739\\onedrive - dxc production\\desktop\\project\\duck\\ducksolution\\ducksolution\\ducksolution\\wwwroot\\ts\\duck-calculation.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
       "RelativeMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|solutionrelative:ducksolution\\wwwroot\\ts\\duck-calculation.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|c:\\users\\tnguyen739\\onedrive - dxc production\\desktop\\project\\duck\\ducksolution\\ducksolution\\ducksolution\\wwwroot\\js\\export-calculation.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|solutionrelative:ducksolution\\wwwroot\\js\\export-calculation.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|c:\\users\\tnguyen739\\onedrive - dxc production\\desktop\\project\\duck\\ducksolution\\ducksolution\\ducksolution\\views\\admin\\duckcalculationpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -23,12 +39,12 @@
       "RelativeMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|solutionrelative:ducksolution\\views\\admin\\signinpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|c:\\users\\tnguyen739\\onedrive - dxc production\\desktop\\project\\duck\\ducksolution\\ducksolution\\ducksolution\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|solutionrelative:ducksolution\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|c:\\users\\tnguyen739\\onedrive - dxc production\\desktop\\project\\duck\\ducksolution\\ducksolution\\ducksolution\\wwwroot\\ts\\box-calculation.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|solutionrelative:ducksolution\\wwwroot\\ts\\box-calculation.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|c:\\users\\tnguyen739\\onedrive - dxc production\\desktop\\project\\duck\\ducksolution\\ducksolution\\ducksolution\\views\\shared\\_sidebar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|solutionrelative:ducksolution\\views\\shared\\_sidebar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|c:\\users\\tnguyen739\\onedrive - dxc production\\desktop\\project\\duck\\ducksolution\\ducksolution\\ducksolution\\wwwroot\\ts\\export-calculation.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|solutionrelative:ducksolution\\wwwroot\\ts\\export-calculation.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|c:\\users\\tnguyen739\\onedrive - dxc production\\desktop\\project\\duck\\ducksolution\\ducksolution\\ducksolution\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -59,16 +75,8 @@
       "RelativeMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|solutionrelative:ducksolution\\models\\ordermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|c:\\users\\tnguyen739\\onedrive - dxc production\\desktop\\project\\duck\\ducksolution\\ducksolution\\ducksolution\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|solutionrelative:ducksolution\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|c:\\users\\tnguyen739\\onedrive - dxc production\\desktop\\project\\duck\\ducksolution\\ducksolution\\ducksolution\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|solutionrelative:ducksolution\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|c:\\users\\tnguyen739\\onedrive - dxc production\\desktop\\project\\duck\\ducksolution\\ducksolution\\ducksolution\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|solutionrelative:ducksolution\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|c:\\users\\tnguyen739\\onedrive - dxc production\\desktop\\project\\duck\\ducksolution\\ducksolution\\ducksolution\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -95,16 +103,8 @@
       "RelativeMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|solutionrelative:ducksolution\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|c:\\users\\tnguyen739\\onedrive - dxc production\\desktop\\project\\duck\\ducksolution\\ducksolution\\ducksolution\\wwwroot\\js\\export-calculation.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|solutionrelative:ducksolution\\wwwroot\\js\\export-calculation.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|c:\\users\\tnguyen739\\onedrive - dxc production\\desktop\\project\\duck\\ducksolution\\ducksolution\\ducksolution\\views\\home\\homepage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|solutionrelative:ducksolution\\views\\home\\homepage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|c:\\users\\tnguyen739\\onedrive - dxc production\\desktop\\project\\duck\\ducksolution\\ducksolution\\ducksolution\\wwwroot\\ts\\export-calculation.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|solutionrelative:ducksolution\\wwwroot\\ts\\export-calculation.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A70ED32F-D69E-D219-DBE3-39C8EE021A60}|DUCKSolution\\DUCKSolution.csproj|c:\\users\\tnguyen739\\onedrive - dxc production\\desktop\\project\\duck\\ducksolution\\ducksolution\\ducksolution\\wwwroot\\ts\\sidebar.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
@@ -150,17 +150,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 15,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "DUCKSolution\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "DUCKSolution\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAACIAAAAOAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "BoxCalculationPage.cshtml",
+              "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Views\\Admin\\BoxCalculationPage.cshtml",
+              "RelativeDocumentMoniker": "DUCKSolution\\Views\\Admin\\BoxCalculationPage.cshtml",
+              "ToolTip": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Views\\Admin\\BoxCalculationPage.cshtml",
+              "RelativeToolTip": "DUCKSolution\\Views\\Admin\\BoxCalculationPage.cshtml",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAADgAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-06-23T15:28:11.742Z",
               "IsPinned": true,
@@ -168,7 +168,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 23,
               "Title": "site.css",
               "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\wwwroot\\css\\site.css",
               "RelativeDocumentMoniker": "DUCKSolution\\wwwroot\\css\\site.css",
@@ -181,7 +181,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 24,
               "Title": "site.js",
               "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\wwwroot\\js\\site.js",
               "RelativeDocumentMoniker": "DUCKSolution\\wwwroot\\js\\site.js",
@@ -194,16 +194,17 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 6,
               "Title": "export-calculation.js",
               "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\wwwroot\\js\\export-calculation.js",
               "RelativeDocumentMoniker": "DUCKSolution\\wwwroot\\js\\export-calculation.js",
               "ToolTip": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\wwwroot\\js\\export-calculation.js",
               "RelativeToolTip": "DUCKSolution\\wwwroot\\js\\export-calculation.js",
-              "ViewState": "AgIAABcBAAAAAAAAAIAwwCwBAAAyAAAAAAAAAA==",
+              "ViewState": "AgIAAGUBAAAAAAAAAAAEwG4BAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2026-06-24T09:25:06.052Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -247,43 +248,85 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "DUCKSolution\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "DUCKSolution\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAowBYAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-23T15:55:59.886Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Program.cs",
+              "RelativeDocumentMoniker": "DUCKSolution\\Program.cs",
+              "ToolTip": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Program.cs",
+              "RelativeToolTip": "DUCKSolution\\Program.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAB8AAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-23T15:29:15.782Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "box-calculation.ts",
-              "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\wwwroot\\ts\\box-calculation.ts",
-              "RelativeDocumentMoniker": "DUCKSolution\\wwwroot\\ts\\box-calculation.ts",
-              "ToolTip": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\wwwroot\\ts\\box-calculation.ts",
-              "RelativeToolTip": "DUCKSolution\\wwwroot\\ts\\box-calculation.ts",
-              "ViewState": "AgIAAA0BAAAAAAAAAAAAABoBAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-06-24T16:54:33.207Z"
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "DUCKSolution\\Controllers\\AdminController.cs",
+              "ToolTip": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "DUCKSolution\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwBkAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-24T07:38:54.325Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "DuckCalculationPage.cshtml",
-              "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Views\\Admin\\DuckCalculationPage.cshtml",
-              "RelativeDocumentMoniker": "DUCKSolution\\Views\\Admin\\DuckCalculationPage.cshtml",
-              "ToolTip": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Views\\Admin\\DuckCalculationPage.cshtml",
-              "RelativeToolTip": "DUCKSolution\\Views\\Admin\\DuckCalculationPage.cshtml",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAAACgAAAApAAAAAAAAAA==",
+              "Title": "_Sidebar.cshtml",
+              "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Views\\Shared\\_Sidebar.cshtml",
+              "RelativeDocumentMoniker": "DUCKSolution\\Views\\Shared\\_Sidebar.cshtml",
+              "ToolTip": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Views\\Shared\\_Sidebar.cshtml",
+              "RelativeToolTip": "DUCKSolution\\Views\\Shared\\_Sidebar.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAB8AAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-06-24T07:33:24.383Z"
+              "WhenOpened": "2026-06-24T16:46:38.587Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "duck-calculation.ts",
               "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\wwwroot\\ts\\duck-calculation.ts",
               "RelativeDocumentMoniker": "DUCKSolution\\wwwroot\\ts\\duck-calculation.ts",
               "ToolTip": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\wwwroot\\ts\\duck-calculation.ts",
               "RelativeToolTip": "DUCKSolution\\wwwroot\\ts\\duck-calculation.ts",
-              "ViewState": "AgIAAFQAAAAAAAAAAAD4v2kAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAALsAAAAAAAAAAAAAALwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-06-24T09:44:11.703Z"
+              "WhenOpened": "2026-06-24T09:44:11.703Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
+              "Title": "DuckCalculationPage.cshtml",
+              "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Views\\Admin\\DuckCalculationPage.cshtml",
+              "RelativeDocumentMoniker": "DUCKSolution\\Views\\Admin\\DuckCalculationPage.cshtml",
+              "ToolTip": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Views\\Admin\\DuckCalculationPage.cshtml",
+              "RelativeToolTip": "DUCKSolution\\Views\\Admin\\DuckCalculationPage.cshtml",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAEwDYAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-06-24T07:33:24.383Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "SignInPage.cshtml",
               "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Views\\Admin\\SignInPage.cshtml",
               "RelativeDocumentMoniker": "DUCKSolution\\Views\\Admin\\SignInPage.cshtml",
@@ -291,23 +334,38 @@
               "RelativeToolTip": "DUCKSolution\\Views\\Admin\\SignInPage.cshtml",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-06-24T07:34:33.15Z"
+              "WhenOpened": "2026-06-24T07:34:33.15Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Controllers\\AdminController.cs",
-              "RelativeDocumentMoniker": "DUCKSolution\\Controllers\\AdminController.cs",
-              "ToolTip": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "DUCKSolution\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAowD0AAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-24T07:38:54.325Z"
+              "DocumentIndex": 9,
+              "Title": "box-calculation.ts",
+              "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\wwwroot\\ts\\box-calculation.ts",
+              "RelativeDocumentMoniker": "DUCKSolution\\wwwroot\\ts\\box-calculation.ts",
+              "ToolTip": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\wwwroot\\ts\\box-calculation.ts",
+              "RelativeToolTip": "DUCKSolution\\wwwroot\\ts\\box-calculation.ts",
+              "ViewState": "AgIAALQAAAAAAAAAAAAEwL0AAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-06-24T16:54:33.207Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
+              "Title": "export-calculation.ts",
+              "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\wwwroot\\ts\\export-calculation.ts",
+              "RelativeDocumentMoniker": "DUCKSolution\\wwwroot\\ts\\export-calculation.ts",
+              "ToolTip": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\wwwroot\\ts\\export-calculation.ts",
+              "RelativeToolTip": "DUCKSolution\\wwwroot\\ts\\export-calculation.ts",
+              "ViewState": "AgIAADwAAAAAAAAAAAAEwEYAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2026-06-24T07:56:46.49Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "DUCKSolution\\Views\\Shared\\_Layout.cshtml",
@@ -319,19 +377,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "_Sidebar.cshtml",
-              "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Views\\Shared\\_Sidebar.cshtml",
-              "RelativeDocumentMoniker": "DUCKSolution\\Views\\Shared\\_Sidebar.cshtml",
-              "ToolTip": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Views\\Shared\\_Sidebar.cshtml",
-              "RelativeToolTip": "DUCKSolution\\Views\\Shared\\_Sidebar.cshtml",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAAB8AAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-06-24T16:46:38.587Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
               "Title": "SignUpViewModel.cs",
               "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\ViewModels\\SignUpViewModel.cs",
               "RelativeDocumentMoniker": "DUCKSolution\\ViewModels\\SignUpViewModel.cs",
@@ -343,7 +389,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "SignInViewModel.cs",
               "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\ViewModels\\SignInViewModel.cs",
               "RelativeDocumentMoniker": "DUCKSolution\\ViewModels\\SignInViewModel.cs",
@@ -355,7 +401,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "BoxCalculationViewModel.cs",
               "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\ViewModels\\BoxCalculationViewModel.cs",
               "RelativeDocumentMoniker": "DUCKSolution\\ViewModels\\BoxCalculationViewModel.cs",
@@ -367,7 +413,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 16,
               "Title": "UserModel.cs",
               "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Models\\UserModel.cs",
               "RelativeDocumentMoniker": "DUCKSolution\\Models\\UserModel.cs",
@@ -379,19 +425,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "DUCKSolution\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "DUCKSolution\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAswBYAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-23T15:55:59.886Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "Box.cs",
               "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Models\\Box.cs",
               "RelativeDocumentMoniker": "DUCKSolution\\Models\\Box.cs",
@@ -403,7 +437,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 17,
               "Title": "OrderModel.cs",
               "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Models\\OrderModel.cs",
               "RelativeDocumentMoniker": "DUCKSolution\\Models\\OrderModel.cs",
@@ -427,7 +461,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 18,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Data\\AppDbContext.cs",
               "RelativeDocumentMoniker": "DUCKSolution\\Data\\AppDbContext.cs",
@@ -439,19 +473,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Program.cs",
-              "RelativeDocumentMoniker": "DUCKSolution\\Program.cs",
-              "ToolTip": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Program.cs",
-              "RelativeToolTip": "DUCKSolution\\Program.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-23T15:29:15.782Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 19,
               "Title": "ErrorViewModel.cs",
               "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Models\\ErrorViewModel.cs",
               "RelativeDocumentMoniker": "DUCKSolution\\Models\\ErrorViewModel.cs",
@@ -475,7 +497,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 20,
               "Title": "SignUpPage.cshtml",
               "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Views\\Admin\\SignUpPage.cshtml",
               "RelativeDocumentMoniker": "DUCKSolution\\Views\\Admin\\SignUpPage.cshtml",
@@ -487,7 +509,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 22,
               "Title": "export-calculation.css",
               "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\wwwroot\\css\\export-calculation.css",
               "RelativeDocumentMoniker": "DUCKSolution\\wwwroot\\css\\export-calculation.css",
@@ -499,7 +521,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 21,
               "Title": "duck-calculation.css",
               "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\wwwroot\\css\\duck-calculation.css",
               "RelativeDocumentMoniker": "DUCKSolution\\wwwroot\\css\\duck-calculation.css",
@@ -512,18 +534,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 25,
-              "Title": "export-calculation.ts",
-              "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\wwwroot\\ts\\export-calculation.ts",
-              "RelativeDocumentMoniker": "DUCKSolution\\wwwroot\\ts\\export-calculation.ts",
-              "ToolTip": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\wwwroot\\ts\\export-calculation.ts",
-              "RelativeToolTip": "DUCKSolution\\wwwroot\\ts\\export-calculation.ts",
-              "ViewState": "AgIAAD4AAAAAAAAAAAAgwDcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-06-24T07:56:46.49Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
               "Title": "HomePage.cshtml",
               "DocumentMoniker": "C:\\Users\\tnguyen739\\OneDrive - DXC Production\\Desktop\\Project\\DUCK\\DuckSolution\\DUCKSolution\\DUCKSolution\\Views\\Home\\HomePage.cshtml",
               "RelativeDocumentMoniker": "DUCKSolution\\Views\\Home\\HomePage.cshtml",

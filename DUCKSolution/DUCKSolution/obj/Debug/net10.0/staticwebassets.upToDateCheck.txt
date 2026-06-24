@@ -4,7 +4,7 @@ wwwroot\css\export-calculation.css
 wwwroot\css\sidebar.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
-wwwroot\js\export-calculation.js
+wwwroot\ts\duck-calculation.ts
 wwwroot\js\export-calculation.js.map
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
@@ -68,7 +68,7 @@ wwwroot\lib\jquery\dist\jquery.slim.min.js
 wwwroot\lib\jquery\dist\jquery.slim.min.map
 wwwroot\lib\jquery\LICENSE.txt
 wwwroot\ts\box-calculation.ts
-wwwroot\ts\duck-calculation.ts
+wwwroot\js\export-calculation.js
 wwwroot\ts\export-calculation.ts
 wwwroot\ts\sidebar.ts
 C:\Users\tnguyen739\OneDrive - DXC Production\Desktop\Project\DUCK\DuckSolution\DUCKSolution\DUCKSolution\wwwroot\favicon.ico
