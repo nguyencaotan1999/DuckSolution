@@ -1,0 +1,28 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Build results
+bin/
+obj/
+
+# Debug / Release
+Debug/
+Release/
+
+# .NET files
+*.dll
+*.exe
+*.pdb
+*.cache
+
+# Logs
+*.log
+
+# VS Code
+.vscode/
+
+# OS files
+Thumbs.db
+.DS_Store

@@ -81,11 +81,14 @@ var BoxCalculation;
             });
         }
         fetchData() {
+            this.fetchBtn.disabled = true;
+
             return __awaiter(this, void 0, void 0, function* () {
                 var _a;
                 const code = this.orderCode.value.trim();
                 if (!code) {
                     showToast("Vui lòng nhập mã đơn hàng.", "error");
+                    this.fetchBtn.disabled = false;
                     return;
                 }
                 try {
@@ -95,15 +98,18 @@ var BoxCalculation;
                     if (!data.success) {
                         this.panel.classList.add("d-none");
                         showToast(data.message, "error");
+                        this.fetchBtn.disabled = false;
                         return;
                     }
                     this.loadedOrderCode = code;
                     this.renderRows((_a = data.boxes) !== null && _a !== void 0 ? _a : []);
                     this.panel.classList.remove("d-none");
                     showToast(data.message, "success");
+                    this.fetchBtn.disabled = false;
                 }
                 catch (_b) {
                     showToast("Không thể kết nối tới máy chủ.", "error");
+                    this.fetchBtn.disabled = false;
                 }
             });
         }
