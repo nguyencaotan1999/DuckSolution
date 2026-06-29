@@ -6,8 +6,19 @@
 
 <div class="duck-page">
     <header class="duck-page__header">
-        <h1 class="duck-page__title">Tính vịt xuất chuồng</h1>
-        <p class="duck-page__subtitle">Tổng ký và tổng số vịt được tính tự động.</p>
+        <div class="row">
+            <div class="col-6">
+                <h1 class="duck-page__title">Tính vịt xuất chuồng</h1>
+                <p class="duck-page__subtitle">Tổng ký và tổng số vịt được tính tự động.</p>
+            </div>
+            <div class="col-6">
+                <div id="rowheaderbtn" class="row">
+                    <div class="col-6"><input id="orderCodeDuckPage" class="form-control" type="text" name="name" value="" placeholder="Nhập mã đơn hàng....." maxlength="15" autocomplete="off" /></div>
+                    <div class="col-6 fetchDataBtnDuck"><input id="fetchDataBtnDuckPage" class="btn btn-primary" type="button" value="Lấy dữ liệu" /></div>
+                </div>
+            </div>
+        </div>
+        
     </header>
 
     @* ---- Global parameters (outside the table) ---- *@
@@ -15,11 +26,11 @@
         <div class="row g-3">
             <div class="col-12 col-sm-6 col-lg-4">
                 <label for="ducksPerCage" class="duck-params__label">Số con vịt trong lồng</label>
-                <input id="ducksPerCage" class="form-control" type="number" min="0" step="1" value="0" placeholder="0" />
+                <input id="ducksPerCage" class="form-control" type="number" min="0" step="1" value="" placeholder="0" />
             </div>
             <div class="col-12 col-sm-6 col-lg-4">
                 <label for="cagesPerWeighing" class="duck-params__label">Số lồng 1 lần cân</label>
-                <input id="cagesPerWeighing" class="form-control" type="number" min="0" step="1" value="0" placeholder="0" />
+                <input id="cagesPerWeighing" class="form-control" type="number" min="0" step="1" value="" placeholder="0" />
             </div>
             <div class="col-12 col-sm-6 col-lg-4">
                 <label for="totalBoxKg" class="duck-params__label">Tổng số ký Lồng</label>
@@ -43,13 +54,14 @@
                     <thead>
                         <tr >
                             <th scope="col" >STT</th>
-                            <th scope="col" style="width:15%">Mã 1</th>
-                            <th scope="col" style="width:15%">Mã 2</th>
-                            <th scope="col" style="width:15%">Mã 3</th>
-                            <th scope="col" style="width:15%">Mã 4</th>
-                            <th scope="col" style="width:15%">Mã 5</th>
-                            <th scope="col" >Tổng ký 5 mã</th>
+                            <th scope="col" style="width:12%">Mã 1</th>
+                            <th scope="col" style="width:12%">Mã 2</th>
+                            <th scope="col" style="width:12%">Mã 3</th>
+                            <th scope="col" style="width:12%">Mã 4</th>
+                            <th scope="col" style="width:12%">Mã 5</th>
+                            <th scope="col" >Tổng ký 5 mã (kg)</th>
                             <th scope="col" >Tổng số vịt 5 mã</th>
+                            <th scope="col">Tỉ lệ trung bình (Kg)</th>
                         </tr>
                     </thead>
                     <tbody id="duckTableBody"></tbody>
@@ -63,15 +75,36 @@
                 <h2 class="duck-summary__title">Tổng kết</h2>
 
                 <div class="duck-summary__field">
-                    <label for="totalWeight" class="duck-summary__label">Tổng ký</label>
+                    <label for="totalWeight" class="duck-summary__label">Tổng số ký (Kg)</label>
                     <input id="totalWeight" class="form-control duck-summary__value" type="number" value="0" readonly />
                 </div>
 
                 <div class="duck-summary__field">
-                    <label for="totalDucks" class="duck-summary__label">Tổng số vịt</label>
+                    <label for="totalDucks" class="duck-summary__label">Tổng số vịt (con)</label>
                     <input id="totalDucks" class="form-control duck-summary__value" type="number" value="0" readonly />
+                </div>
+                <div class="duck-summary__field">
+                    <input id="saveDataBtnDuckPage" class="btn btn-primary" type="button" value="Lưu dữ liệu" />
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="duck-params mt-2">
+        <div class="row g-3">
+            <div class="col-12 col-sm-6 col-lg-4">
+                <label for="ducksPerCage" class="duck-params__label">Số vịt trừ</label>
+                <input id="someInput1" class="form-control" type="number" placeholder="Nhập số vịt muốn trừ..." />
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4">
+                <label for="cagesPerWeighing" class="duck-params__label">Giá vịt xuất</label>
+                <input id="someInput2" class="form-control" type="number" placeholder="Nhập số tiền..." />
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4">
+                <label for="totalBoxKg" class="duck-params__label">Số ký Vịt trung bình (Kg)</label>
+                <input id="someInput3" class="form-control" type="text" value="0"  disabled/>
+            </div>
+        </div>
+    </div>
+
 </div>

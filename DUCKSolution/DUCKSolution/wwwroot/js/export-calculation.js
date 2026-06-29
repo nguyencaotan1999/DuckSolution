@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 var BoxCalculation;
 (function (BoxCalculation) {
+    const CODE_MAX_DIGITS = 6;
     function parseValue(input) {
         const value = parseFloat(input.value);
         return Number.isFinite(value) ? value : 0;
@@ -46,6 +47,12 @@ var BoxCalculation;
             window.setTimeout(() => toast.remove(), 4000);
         }
     }
+    function limitDigits(input, maxDigits) {
+
+        if (input.value.length > maxDigits) {
+            input.value = input.value.slice(0, maxDigits);
+        }
+    }
     class BoxTable {
         constructor() {
             this.loadedOrderCode = "";
@@ -69,7 +76,17 @@ var BoxCalculation;
             });
             this.addRowBtn.addEventListener("click", () => this.addRow());
             this.saveBtn.addEventListener("click", () => void this.saveData());
-            this.tableBody.addEventListener("input", () => this.recalculate());
+            this.tableBody.addEventListener("input", (e) => {
+                const target = e.target;
+                if (target.classList.contains("box-number")) {
+                    limitDigits(target, CODE_MAX_DIGITS);
+                }
+                if (target.classList.contains("box-weight")) {
+                    
+                        limitDigits(target, CODE_MAX_DIGITS);
+                    }
+                this.recalculate();
+            });
             this.tableBody.addEventListener("click", (e) => {
                 var _a;
                 const removeBtn = e.target.closest(".box-row__remove");
@@ -243,7 +260,7 @@ var BoxCalculation;
 var DuckCalculation;
 (function (DuckCalculation) {
     const CODE_COUNT = 5;
-    const CODE_MAX_DIGITS = 5;
+    const CODE_MAX_DIGITS = 6;
     const GLOBAL_MAX_DIGITS = 2;
     function parseValue(input) {
         const value = parseFloat(input.value);
@@ -253,6 +270,7 @@ var DuckCalculation;
         return input.value.trim() !== "";
     }
     function limitDigits(input, maxDigits) {
+
         if (input.value.length > maxDigits) {
             input.value = input.value.slice(0, maxDigits);
         }
@@ -313,7 +331,8 @@ var DuckCalculation;
                 </td>
                 ${codeCells}
                 <td class="duck-row__weight">0</td>
-                <td class="duck-row__ducks">0</td>`;
+                <td class="duck-row__ducks">0</td>
+                <td class="duck-row__average">0</td>`;
             this.tableBody.appendChild(row);
             this.renumberRows();
             this.recalculate();

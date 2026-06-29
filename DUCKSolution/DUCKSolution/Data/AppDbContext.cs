@@ -14,7 +14,9 @@ namespace DUCKSolution.Data
         //public DbSet<ExportCalculation> ExportCalculations { get; set; }
         public DbSet<OrderModel> Orders { get; set; }
         public DbSet<UserModel> Users { get; set; }
-        public DbSet<Box> Boxes { get; set; } 
+        public DbSet<Box> Boxes { get; set; }
+        public DbSet<CodeDetail> CodeDetails { get; set; }
 
-        }
+
+    }
 }

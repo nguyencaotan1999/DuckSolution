@@ -109,7 +109,8 @@
 
 /* Computed columns get a subtle highlight */
 .duck-row__weight,
-.duck-row__ducks {
+.duck-row__ducks,
+.duck-row__average {
     font-weight: 600;
     color: var(--duck-accent);
     background: var(--duck-accent-soft);
@@ -128,7 +129,7 @@
 
 .duck-input {
     text-align: center;
-    min-width: 20px;
+    min-width: 15px;
 }
 
 .duck-input:focus {
@@ -187,4 +188,35 @@
         position: static;
     }
 }
+@media (max-width: 575.98px) {
+    #rowheaderbtn {
+    display:block;
+    width:400px;
+    margin:auto;
+    }
+    .fetchDataBtnDuck {
+        margin-top: 10px;
+        text-align: right;
+    }
+
+    .duck-table-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+        .duck-table-wrap .duck-table {
+            min-width: 900px; /* chỉnh theo số cột thực tế */
+            width: max-content;
+            table-layout: auto;
+            white-space: nowrap;
+        }
+
+            .duck-table-wrap .duck-table th,
+            .duck-table-wrap .duck-table td {
+                white-space: nowrap;
+                vertical-align: middle;
+            }
+
+}
+
 

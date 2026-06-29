@@ -15,6 +15,11 @@ namespace DUCKSolution.Models
         public string OrderCode { get; set; } = string.Empty;
         public int totalBox { get; set; } = 0;
         public decimal totalBoxKg { get; set; } = 0;
+        public int totalDuckinBox { get; set; } = 0;
+        public int totalBoxInOneTime { get; set; } = 0;
+        public int decreaseDuck { get; set; } = 0;
+        public decimal currency { get; set; } = 0;
+
         public DateTime CreateDate { get; set; } = DateTime.Now;
 
     }

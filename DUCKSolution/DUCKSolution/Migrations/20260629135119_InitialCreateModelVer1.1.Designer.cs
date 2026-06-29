@@ -4,6 +4,7 @@ using DUCKSolution.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DUCKSolution.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260629135119_InitialCreateModelVer1.1")]
+    partial class InitialCreateModelVer11
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -97,12 +100,6 @@ namespace DUCKSolution.Migrations
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<decimal>("currency")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("decreaseDuck")
-                        .HasColumnType("int");
-
                     b.Property<decimal>("price")
                         .HasColumnType("decimal(18,2)");
 
@@ -112,14 +109,8 @@ namespace DUCKSolution.Migrations
                     b.Property<int>("totalBox")
                         .HasColumnType("int");
 
-                    b.Property<int>("totalBoxInOneTime")
-                        .HasColumnType("int");
-
                     b.Property<decimal>("totalBoxKg")
                         .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("totalDuckinBox")
-                        .HasColumnType("int");
 
                     b.Property<decimal>("totalKG")
                         .HasColumnType("decimal(18,2)");
