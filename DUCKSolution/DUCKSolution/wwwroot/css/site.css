@@ -551,6 +551,11 @@ input {
     box-shadow: 0 0 0 6px rgba(141, 69, 247, 0.08);
 }
 
+#carouselExampleIndicators {
+    max-width:400px;
+    max-height:400px;
+    text-align:center;
+}
 @media (max-width: 1439.98px) {
     .rooms-grid {
         grid-template-columns: repeat(2, minmax(210px, 1fr));
