@@ -158,5 +158,122 @@ namespace DUCKSolution.Controllers
                 return Json(new { success = false, message = "Lưu dữ liệu thất bại. Vui lòng thử lại." });
             }
         }
+
+        /// <summary>
+        /// Looks up an order by OrderCode plus its related CodeDetail (5 codes).
+        /// Consumed via AJAX by the "Lấy dữ liệu" button on DuckCalculationPage.
+        /// </summary>
+        [HttpGet]
+        public async Task<IActionResult> GetDuckData(string orderCode)
+        {
+            if (string.IsNullOrWhiteSpace(orderCode))
+            {
+                return Json(new { success = false, message = "Vui lòng nhập mã đơn hàng." });
+            }
+
+            orderCode = orderCode.Trim();
+
+            var order = await _context.Orders
+                .FirstOrDefaultAsync(o => o.OrderCode == orderCode);
+
+            if (order == null)
+            {
+                return Json(new { success = false, message = $"Không tìm thấy đơn hàng \"{orderCode}\"." });
+            }
+
+            var codeDetail = await _context.CodeDetails
+                .FirstOrDefaultAsync(c => c.OrderCode == orderCode);
+
+            return Json(new
+            {
+                success = true,
+                message = $"Đã tải dữ liệu cho đơn hàng \"{orderCode}\".",
+                totalDuckinBox = order.totalDuckinBox,
+                totalBoxInOneTime = order.totalBoxInOneTime,
+                BoxWeight = order.totalBoxKg,
+                decreaseDuck = order.decreaseDuck,
+                currency = order.currency,
+                code1 = codeDetail?.code1 ?? 0,
+                code2 = codeDetail?.code2 ?? 0,
+                code3 = codeDetail?.code3 ?? 0,
+                code4 = codeDetail?.code4 ?? 0,
+                code5 = codeDetail?.code5 ?? 0
+            });
+        }
+
+        /// <summary>
+        /// Saves (creates or updates) an order and its related CodeDetail from
+        /// DuckCalculationPage inside a single transaction to keep both in sync.
+        /// </summary>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SaveDuckData([FromBody] DuckCalculationRequestDto model)
+        {
+            if (model == null || string.IsNullOrWhiteSpace(model.OrderCode))
+            {
+                return Json(new { success = false, message = "Thiếu mã đơn hàng." });
+            }
+
+            if (!ModelState.IsValid)
+            {
+                var firstError = ModelState.Values
+                    .SelectMany(v => v.Errors)
+                    .Select(e => e.ErrorMessage)
+                    .FirstOrDefault() ?? "Dữ liệu không hợp lệ.";
+                return Json(new { success = false, message = firstError });
+            }
+
+            var orderCode = model.OrderCode.Trim();
+
+            await using var transaction = await _context.Database.BeginTransactionAsync();
+            try
+            {
+                var order = await _context.Orders
+                    .FirstOrDefaultAsync(o => o.OrderCode == orderCode);
+
+                if (order == null)
+                {
+                    // Create a new order when the code does not exist yet.
+                    order = new OrderModel
+                    {
+                        OrderCode = orderCode,
+                        OrderDate = DateTime.Now,
+                        CreateDate = DateTime.Now
+                    };
+                    _context.Orders.Add(order);
+                }
+
+                order.totalDuckinBox = model.totalDuckinBox ?? order.totalDuckinBox;
+                order.totalBoxInOneTime = model.totalBoxInOneTime ?? order.totalBoxInOneTime;
+                order.totalBoxKg = model.BoxWeight ?? order.totalBoxKg;
+                order.decreaseDuck = model.decreaseDuck ?? order.decreaseDuck;
+                order.currency = model.currency ?? order.currency;
+
+                var codeDetail = await _context.CodeDetails
+                    .FirstOrDefaultAsync(c => c.OrderCode == orderCode);
+
+                if (codeDetail == null)
+                {
+                    codeDetail = new CodeDetail { OrderCode = orderCode };
+                    _context.CodeDetails.Add(codeDetail);
+                }
+
+                codeDetail.code1 = model.code1 ?? codeDetail.code1;
+                codeDetail.code2 = model.code2 ?? codeDetail.code2;
+                codeDetail.code3 = model.code3 ?? codeDetail.code3;
+                codeDetail.code4 = model.code4 ?? codeDetail.code4;
+                codeDetail.code5 = model.code5 ?? codeDetail.code5;
+
+                await _context.SaveChangesAsync();
+                await transaction.CommitAsync();
+
+                return Json(new { success = true, message = "Đã lưu dữ liệu thành công." });
+            }
+            catch
+            {
+                await transaction.RollbackAsync();
+                return Json(new { success = false, message = "Lưu dữ liệu thất bại. Vui lòng thử lại." });
+            }
+        }
     }
 }
