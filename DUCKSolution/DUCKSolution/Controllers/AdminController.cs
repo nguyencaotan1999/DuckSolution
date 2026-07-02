@@ -227,6 +227,24 @@ namespace DUCKSolution.Controllers
 
             var orderCode = model.OrderCode.Trim();
 
+            var codeDetails = model.codeDetails ?? new List<CodeDetailDto>();
+            if (codeDetails.Count == 0)
+            {
+                return Json(new { success = false, message = "Không có dữ liệu mã để lưu." });
+            }
+
+            foreach (var item in codeDetails)
+            {
+                if ((item.code1 ?? 0) < 0 ||
+                    (item.code2 ?? 0) < 0 ||
+                    (item.code3 ?? 0) < 0 ||
+                    (item.code4 ?? 0) < 0 ||
+                    (item.code5 ?? 0) < 0)
+                {
+                    return Json(new { success = false, message = "Dữ liệu mã không hợp lệ." });
+                }
+            }
+
             await using var transaction = await _context.Database.BeginTransactionAsync();
             try
             {
@@ -251,25 +269,27 @@ namespace DUCKSolution.Controllers
                 order.decreaseDuck = model.decreaseDuck ?? order.decreaseDuck;
                 order.currency = model.currency ?? order.currency;
 
-                var codeDetail = await _context.CodeDetails
-                    .FirstOrDefaultAsync(c => c.OrderCode == orderCode);
+                var existingCodeDetails = await _context.CodeDetails
+                    .Where(c => c.OrderCode == orderCode)
+                    .ToListAsync();
+                _context.CodeDetails.RemoveRange(existingCodeDetails);
 
-                if (codeDetail == null)
+                var codeDetailEntities = codeDetails.Select(item => new CodeDetail
                 {
-                    codeDetail = new CodeDetail { OrderCode = orderCode };
-                    _context.CodeDetails.Add(codeDetail);
-                }
+                    OrderCode = orderCode,
+                    code1 = item.code1 ?? 0,
+                    code2 = item.code2 ?? 0,
+                    code3 = item.code3 ?? 0,
+                    code4 = item.code4 ?? 0,
+                    code5 = item.code5 ?? 0
+                }).ToList();
 
-                codeDetail.code1 = model.code1 ?? codeDetail.code1;
-                codeDetail.code2 = model.code2 ?? codeDetail.code2;
-                codeDetail.code3 = model.code3 ?? codeDetail.code3;
-                codeDetail.code4 = model.code4 ?? codeDetail.code4;
-                codeDetail.code5 = model.code5 ?? codeDetail.code5;
+                await _context.CodeDetails.AddRangeAsync(codeDetailEntities);
 
                 await _context.SaveChangesAsync();
                 await transaction.CommitAsync();
 
-                return Json(new { success = true, message = "Đã lưu dữ liệu thành công." });
+                return Json(new { success = true, message = "Đã lưu dữ liệu thành công.", rowCount = codeDetailEntities.Count });
             }
             catch
             {

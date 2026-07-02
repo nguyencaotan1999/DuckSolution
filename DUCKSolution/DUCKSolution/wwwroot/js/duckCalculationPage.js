@@ -43,21 +43,24 @@
         el.dispatchEvent(new Event("input", { bubbles: true }));
     }
 
-    // The 5 "Mã" inputs live in the first row of the duck table.
-    function getCodeInputs() {
+    function getCodeInputsByRow(row) {
+        if (!row) {
+            return [];
+        }
+        return Array.prototype.slice.call(row.querySelectorAll(".duck-code")).slice(0, 5);
+    }
+
+    function getFirstRowCodeInputs() {
         var body = byId("duckTableBody");
         if (!body) {
             return [];
         }
         var firstRow = body.querySelector("tr");
-        if (!firstRow) {
-            return [];
-        }
-        return Array.prototype.slice.call(firstRow.querySelectorAll(".duck-code")).slice(0, 5);
+        return getCodeInputsByRow(firstRow);
     }
 
     function setCodeValue(index, value) {
-        var inputs = getCodeInputs();
+        var inputs = getFirstRowCodeInputs();
         var input = inputs[index];
         if (!input) {
             return;
@@ -157,6 +160,71 @@
         return true;
     }
 
+    function collectCodeDetailsRows() {
+        // Required by implementation: select all rows from #duckTableBody.
+        var rows = document.querySelectorAll("#duckTableBody tr");
+        var codeDetails = [];
+
+        for (var i = 0; i < rows.length; i++) {
+            var row = rows[i];
+            var rowInputs = getCodeInputsByRow(row);
+            if (rowInputs.length === 0) {
+                continue;
+            }
+
+            var hasMeaningfulData = false;
+            var detail = {
+                code1: 0,
+                code2: 0,
+                code3: 0,
+                code4: 0,
+                code5: 0
+            };
+
+            for (var c = 0; c < 5; c++) {
+                var input = rowInputs[c];
+                var raw = input && input.value ? String(input.value).trim() : "";
+                if (raw !== "") {
+                    hasMeaningfulData = true;
+                }
+
+                if (raw === "") {
+                    continue;
+                }
+
+                var numberValue = Number(raw);
+                if (!Number.isFinite(numberValue) || numberValue < 0) {
+                    return {
+                        valid: false,
+                        message: "Dòng " + (i + 1) + " có mã không hợp lệ.",
+                        codeDetails: []
+                    };
+                }
+
+                detail["code" + (c + 1)] = numberValue;
+            }
+
+            // Skip empty rows with no meaningful data.
+            if (hasMeaningfulData) {
+                codeDetails.push(detail);
+            }
+        }
+
+        if (codeDetails.length === 0) {
+            return {
+                valid: false,
+                message: "Không có dữ liệu mã để lưu.",
+                codeDetails: []
+            };
+        }
+
+        return {
+            valid: true,
+            message: "",
+            codeDetails: codeDetails
+        };
+    }
+
     function validateSave() {
         if (!getValue(IDS.orderCode)) {
             showToast("Vui lòng nhập mã đơn hàng.", "warning");
@@ -184,23 +252,13 @@
             }
         }
 
-        // Code fields (optional) must still be numeric and >= 0 when present.
-        var codeInputs = getCodeInputs();
-        for (var c = 0; c < codeInputs.length; c++) {
-            var codeVal = parseCode(codeInputs[c]);
-            if (Number.isNaN(codeVal) || codeVal < 0) {
-                showToast("Mã " + (c + 1) + " phải là số hợp lệ và không âm.", "warning");
-                return false;
-            }
-        }
-
         return true;
     }
 
     // ---- Form data mapping ------------------------------------------------
 
-    function collectFormData() {
-        var codeInputs = getCodeInputs();
+    function collectFormData(codeDetails) {
+        var first = (codeDetails && codeDetails.length > 0) ? codeDetails[0] : null;
         return {
             orderCode: getValue(IDS.orderCode),
             totalDuckinBox: parseNumber(IDS.totalDuckinBox),
@@ -208,11 +266,12 @@
             boxWeight: parseNumber(IDS.boxWeight),
             decreaseDuck: parseNumber(IDS.decreaseDuck),
             currency: parseNumber(IDS.currency),
-            code1: codeInputs[0] ? parseCode(codeInputs[0]) : 0,
-            code2: codeInputs[1] ? parseCode(codeInputs[1]) : 0,
-            code3: codeInputs[2] ? parseCode(codeInputs[2]) : 0,
-            code4: codeInputs[3] ? parseCode(codeInputs[3]) : 0,
-            code5: codeInputs[4] ? parseCode(codeInputs[4]) : 0
+            code1: first ? first.code1 : 0,
+            code2: first ? first.code2 : 0,
+            code3: first ? first.code3 : 0,
+            code4: first ? first.code4 : 0,
+            code5: first ? first.code5 : 0,
+            codeDetails: codeDetails || []
         };
     }
 
@@ -277,8 +336,14 @@
             return;
         }
 
+        var detailsResult = collectCodeDetailsRows();
+        if (!detailsResult.valid) {
+            showToast(detailsResult.message, "warning");
+            return;
+        }
+
         var saveBtn = byId(IDS.saveBtn);
-        var payload = collectFormData();
+        var payload = collectFormData(detailsResult.codeDetails);
         setButtonLoading(saveBtn, true, "Đang lưu...");
 
         fetch(SAVE_URL, {
@@ -299,7 +364,8 @@
                 code2: payload.code2,
                 code3: payload.code3,
                 code4: payload.code4,
-                code5: payload.code5
+                code5: payload.code5,
+                codeDetails: payload.codeDetails
             })
         })
             .then(function (res) {

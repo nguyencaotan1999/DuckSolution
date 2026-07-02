@@ -2,6 +2,24 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DUCKSolution.ViewModels
 {
+    public class CodeDetailDto
+    {
+        [Range(0, double.MaxValue, ErrorMessage = "Mã 1 không hợp lệ.")]
+        public decimal? code1 { get; set; }
+
+        [Range(0, double.MaxValue, ErrorMessage = "Mã 2 không hợp lệ.")]
+        public decimal? code2 { get; set; }
+
+        [Range(0, double.MaxValue, ErrorMessage = "Mã 3 không hợp lệ.")]
+        public decimal? code3 { get; set; }
+
+        [Range(0, double.MaxValue, ErrorMessage = "Mã 4 không hợp lệ.")]
+        public decimal? code4 { get; set; }
+
+        [Range(0, double.MaxValue, ErrorMessage = "Mã 5 không hợp lệ.")]
+        public decimal? code5 { get; set; }
+    }
+
     /// <summary>
     /// Payload posted from DuckCalculationPage when saving the order parameters
     /// and the related 5-code detail. Mirrors the fields fetched by GetDuckData.
@@ -48,5 +66,8 @@ namespace DUCKSolution.ViewModels
 
         [Range(0, double.MaxValue, ErrorMessage = "Mã 5 không hợp lệ.")]
         public decimal? code5 { get; set; }
+
+        // Multi-row payload from #duckTableBody.
+        public List<CodeDetailDto> codeDetails { get; set; } = new();
     }
 }
