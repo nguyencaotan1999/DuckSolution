@@ -182,8 +182,20 @@ namespace DUCKSolution.Controllers
             }
             var boxdetail = await _context.Boxes.FirstOrDefaultAsync(b => b.OrderCode == orderCode);
 
-            var codeDetail = await _context.CodeDetails
-                .FirstOrDefaultAsync(c => c.OrderCode == orderCode);
+            var codeDetails = await _context.CodeDetails
+                .Where(c => c.OrderCode == orderCode)
+                .OrderBy(c => c.Id)
+                .Select(c => new
+                {
+                    code1 = c.code1,
+                    code2 = c.code2,
+                    code3 = c.code3,
+                    code4 = c.code4,
+                    code5 = c.code5
+                })
+                .ToListAsync();
+
+            var firstCodeDetail = codeDetails.FirstOrDefault();
 
             return Json(new
             {
@@ -194,12 +206,13 @@ namespace DUCKSolution.Controllers
                 BoxWeight = order.totalBoxKg,
                 decreaseDuck = order.decreaseDuck,
                 currency = order.currency,
-                code1 = codeDetail?.code1 ?? 0,
-                code2 = codeDetail?.code2 ?? 0,
-                code3 = codeDetail?.code3 ?? 0,
-                code4 = codeDetail?.code4 ?? 0,
-                code5 = codeDetail?.code5 ?? 0,
-                totalBoxKg = boxdetail?.BoxWeight ?? 0
+                code1 = firstCodeDetail?.code1 ?? 0,
+                code2 = firstCodeDetail?.code2 ?? 0,
+                code3 = firstCodeDetail?.code3 ?? 0,
+                code4 = firstCodeDetail?.code4 ?? 0,
+                code5 = firstCodeDetail?.code5 ?? 0,
+                totalBoxKg = boxdetail?.BoxWeight ?? 0,
+                codeDetails
             });
         }
 

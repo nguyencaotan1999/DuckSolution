@@ -275,10 +275,57 @@
         };
     }
 
+    function renderCodeDetailsRows(codeDetails) {
+        var tableBody = document.querySelector("#duckTableBody");
+        if (!tableBody) {
+            return;
+        }
+
+        // Required behavior: clear current rows before binding fetched data.
+        tableBody.innerHTML = "";
+
+        var details = Array.isArray(codeDetails) ? codeDetails : [];
+        for (var i = 0; i < details.length; i++) {
+            var item = details[i] || {};
+            var row = document.createElement("tr");
+            row.innerHTML =
+                '<td class="duck-row__index"><span class="duck-row__no">' + (i + 1) + "</span></td>" +
+                '<td><input type="number" class="form-control duck-input duck-code" min="0" step="1" placeholder="0" aria-label="Mã 1" value="' + (item.code1 !== undefined && item.code1 !== null ? item.code1 : "") + '"></td>' +
+                '<td><input type="number" class="form-control duck-input duck-code" min="0" step="1" placeholder="0" aria-label="Mã 2" value="' + (item.code2 !== undefined && item.code2 !== null ? item.code2 : "") + '"></td>' +
+                '<td><input type="number" class="form-control duck-input duck-code" min="0" step="1" placeholder="0" aria-label="Mã 3" value="' + (item.code3 !== undefined && item.code3 !== null ? item.code3 : "") + '"></td>' +
+                '<td><input type="number" class="form-control duck-input duck-code" min="0" step="1" placeholder="0" aria-label="Mã 4" value="' + (item.code4 !== undefined && item.code4 !== null ? item.code4 : "") + '"></td>' +
+                '<td><input type="number" class="form-control duck-input duck-code" min="0" step="1" placeholder="0" aria-label="Mã 5" value="' + (item.code5 !== undefined && item.code5 !== null ? item.code5 : "") + '"></td>' +
+                '<td class="duck-row__weight">0</td>' +
+                '<td class="duck-row__ducks">0</td>' +
+                '<td class="duck-row__average">0</td>';
+            tableBody.appendChild(row);
+        }
+
+        var rowCount = byId("duckRowCount");
+        if (rowCount) {
+            rowCount.textContent = String(details.length);
+        }
+
+        // Trigger existing calculation listener from export-calculation.js.
+        if (details.length > 0) {
+            var firstInput = tableBody.querySelector(".duck-code");
+            if (firstInput) {
+                firstInput.dispatchEvent(new Event("input", { bubbles: true }));
+            }
+        }
+    }
+
     function populateFormData(data) {
         setValue(IDS.totalDuckinBox, data.totalDuckinBox);
         setValue(IDS.totalBoxInOneTime, data.totalBoxInOneTime);
-        setValue(IDS.boxWeight, data.boxWeight);
+        var boxWeight = data.boxWeight;
+        if (boxWeight === undefined || boxWeight === null) {
+            boxWeight = data.BoxWeight;
+        }
+        if (boxWeight === undefined || boxWeight === null) {
+            boxWeight = data.totalBoxKg;
+        }
+        setValue(IDS.boxWeight, boxWeight);
         setValue(IDS.decreaseDuck, data.decreaseDuck);
         setValue(IDS.currency, data.currency);
         setCodeValue(0, data.code1);
@@ -315,10 +362,20 @@
             })
             .then(function (data) {
                 if (!data || !data.success) {
+                    renderCodeDetailsRows([]);
                     showToast(data && data.message ? data.message : "Không tìm thấy dữ liệu.", "warning");
                     return;
                 }
+
+                var details = Array.isArray(data.codeDetails) ? data.codeDetails : [];
+                renderCodeDetailsRows(details);
                 populateFormData(data);
+
+                if (details.length === 0) {
+                    showToast("Không tìm thấy dữ liệu mã cho đơn hàng này.", "warning");
+                    return;
+                }
+
                 showToast(data.message || "Đã tải dữ liệu thành công.", "success");
             })
             .catch(function () {
