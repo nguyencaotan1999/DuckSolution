@@ -169,7 +169,7 @@
             { id: IDS.totalBoxInOneTime, label: "Số lồng 1 lần cân" },
             { id: IDS.boxWeight, label: "Tổng số ký lồng" },
             { id: IDS.decreaseDuck, label: "Số vịt trừ" },
-            { id: IDS.currency, label: "Giá vịt xuất" }
+            { id: IDS.currency, label: "Giá vịt xuất" },
         ];
 
         for (var i = 0; i < numericChecks.length; i++) {
@@ -219,7 +219,7 @@
     function populateFormData(data) {
         setValue(IDS.totalDuckinBox, data.totalDuckinBox);
         setValue(IDS.totalBoxInOneTime, data.totalBoxInOneTime);
-        setValue(IDS.boxWeight, data.BoxWeight);
+        setValue(IDS.boxWeight, data.boxWeight);
         setValue(IDS.decreaseDuck, data.decreaseDuck);
         setValue(IDS.currency, data.currency);
         setCodeValue(0, data.code1);

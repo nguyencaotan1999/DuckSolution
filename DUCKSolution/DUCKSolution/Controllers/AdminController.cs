@@ -180,6 +180,7 @@ namespace DUCKSolution.Controllers
             {
                 return Json(new { success = false, message = $"Không tìm thấy đơn hàng \"{orderCode}\"." });
             }
+            var boxdetail = await _context.Boxes.FirstOrDefaultAsync(b => b.OrderCode == orderCode);
 
             var codeDetail = await _context.CodeDetails
                 .FirstOrDefaultAsync(c => c.OrderCode == orderCode);
@@ -197,7 +198,8 @@ namespace DUCKSolution.Controllers
                 code2 = codeDetail?.code2 ?? 0,
                 code3 = codeDetail?.code3 ?? 0,
                 code4 = codeDetail?.code4 ?? 0,
-                code5 = codeDetail?.code5 ?? 0
+                code5 = codeDetail?.code5 ?? 0,
+                totalBoxKg = boxdetail?.BoxWeight ?? 0
             });
         }
 
