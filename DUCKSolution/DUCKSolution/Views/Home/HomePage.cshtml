@@ -2,5 +2,302 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    ViewData["Title"] = "Home";
 }
-<h1>HomePage</h1>
+
+<main class="home-page" aria-label="Duck Audit homepage">
+    <section class="home-hero py-5 py-lg-6" style="border-radius:40px;margin:10px;padding:10px">
+        <div class="container">
+            <div class="row align-items-center g-4 g-lg-5">
+                <div class="col-12 col-lg-7">
+                    <span class="hero-badge">Duck Audit Platform</span>
+                    <h1 class="hero-title mt-3 mb-3">Trang trại vịt Ba tuii</h1>
+                    <p class="hero-subtitle mb-4">
+                        Hệ thống tính toán vịt khi xuất chuồng của ba Cường mẹ Hoa.
+                    </p>
+                    <a href="#features" class="btn btn-dark btn-lg hero-cta" aria-label="Explore system features">GO......</a>
+                </div>
+                <div class="col-12 col-lg-5">
+                    <div class="hero-visual" role="img" aria-label="Illustration representing duck farm operations and analytics">
+                        <i class="bi bi-egg-fried"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features-section py-5">
+        <div class="container">
+            <div class="text-center mb-4 mb-lg-5">
+                <h2 class="section-title">Welcome to Trang trại vịt Ba tuii</h2>
+                <p class="section-subtitle mb-0">
+                    chọn phương thức tính toán.
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-12 col-md-6 col-lg-4 d-flex">
+                    <article class="feature-card w-100" aria-label="Duck Farm Audit feature">
+                        <div class="feature-image-box" role="img" aria-label="Duck farm audit icon area">
+                            <i class="bi bi-clipboard2-check"></i>
+                        </div>
+                        <h3 class="feature-title">Tính Lồng</h3>
+                        <p class="feature-text">
+                            Quản lý và tính số lồng 
+                        </p>
+                        <button onclick="window.location.href='/Admin/BoxCalculationPage'" class="btn btn-dark learn-more-btn mt-auto" data-card-title="Duck Farm Audit" aria-label="Learn more about Duck Farm Audit">
+                            Go...
+                        </button>
+                    </article>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4 d-flex">
+                    <article class="feature-card w-100" aria-label="Box Calculation feature">
+                        <div class="feature-image-box" role="img" aria-label="Box calculation icon area">
+                            <i class="bi bi-calculator"></i>
+                        </div>
+                        <h3 class="feature-title">Tính vịt xuất chuồng</h3>
+                        <p class="feature-text">
+                            quản lý và tính số vịt xuất chuồng.
+                        </p>
+                        <button onclick="window.location.href='/Admin/DuckCalculationPage'" class="btn btn-dark learn-more-btn mt-auto" data-card-title="Box Calculation" aria-label="Learn more about Box Calculation">
+                            Go...
+                        </button>
+                    </article>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4 d-flex">
+                    <article class="feature-card w-100" aria-label="Data Management feature">
+                        <div class="feature-image-box" role="img" aria-label="Data management icon area">
+                            <i class="bi bi-database-fill-gear"></i>
+                        </div>
+                        <h3 class="feature-title">DATA MANAGEMENT</h3>
+                        <p class="feature-text">
+                            Save, retrieve, and manage production data with a responsive web interface.
+                        </p>
+                        <button class="btn btn-dark learn-more-btn mt-auto" data-card-title="Data Management" aria-label="Learn more about Data Management">
+                            Go...
+                        </button>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div id="homeToastContainer" class="toast-container position-fixed bottom-0 end-0 p-3" aria-live="polite" aria-atomic="true"></div>
+
+<style>
+    .home-page {
+        background: #f9fafb;
+        color: #1f2937;
+        overflow-x: hidden;
+    }
+
+    .py-lg-6 {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+
+    .home-hero {
+        background: linear-gradient(135deg, #f7c600 0%, #f3b304 100%);
+        color: #1a1a1a;
+    }
+
+    .hero-badge {
+        display: inline-block;
+        font-weight: 700;
+        font-size: 0.85rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 0.45rem 0.8rem;
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 999px;
+    }
+
+    .hero-title {
+        font-size: clamp(1.8rem, 3.5vw, 3rem);
+        font-weight: 800;
+        line-height: 1.15;
+    }
+
+    .hero-subtitle {
+        max-width: 52ch;
+        font-size: clamp(1rem, 1.2vw, 1.15rem);
+        opacity: 0.92;
+    }
+
+    .hero-cta {
+        border-radius: 999px;
+        padding: 0.75rem 1.5rem;
+        font-weight: 600;
+    }
+
+    .hero-visual {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 1.25rem;
+        min-height: 220px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
+    }
+
+    .hero-visual i {
+        font-size: clamp(3rem, 8vw, 5rem);
+        color: #d09300;
+    }
+
+    .features-section {
+        background: #ffffff;
+    }
+
+    .section-title {
+        font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+        font-weight: 800;
+        color: #111827;
+    }
+
+    .section-subtitle {
+        color: #4b5563;
+        max-width: 68ch;
+        margin-inline: auto;
+    }
+
+    .feature-card {
+        background: #f7c600;
+        border-radius: 1rem;
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+        padding: 1.15rem;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.28s ease, box-shadow 0.28s ease;
+        min-height: 100%;
+    }
+
+    .feature-card:hover,
+    .feature-card:focus-within {
+        transform: translateY(-8px);
+        box-shadow: 0 18px 34px rgba(0, 0, 0, 0.2);
+    }
+
+    .feature-image-box {
+        background: #ffffff;
+        border-radius: 0.85rem;
+        min-height: 170px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+
+    .feature-image-box i {
+        font-size: clamp(2.6rem, 7vw, 4rem);
+        color: #d09300;
+    }
+
+    .feature-title {
+        font-size: 1.15rem;
+        font-weight: 800;
+        letter-spacing: 0.03em;
+        color: #1f2937;
+        margin-bottom: 0.7rem;
+        text-transform: uppercase;
+    }
+
+    .feature-text {
+        color: #1f2937;
+        line-height: 1.55;
+        margin-bottom: 1rem;
+        flex-grow: 1;
+    }
+
+    .learn-more-btn {
+        align-self: flex-start;
+        border-radius: 999px;
+        font-weight: 600;
+        padding-inline: 1rem;
+    }
+
+    @@media (max-width: 991.98px) {
+        .hero-subtitle {
+            max-width: 100%;
+        }
+
+        .feature-image-box {
+            min-height: 150px;
+        }
+    }
+
+    @@media (max-width: 575.98px) {
+        .home-hero,
+        .features-section {
+            padding-left: 0.35rem;
+            padding-right: 0.35rem;
+        }
+
+        .feature-card {
+            padding: 1rem;
+        }
+    }
+</style>
+
+<script>
+    (function () {
+        "use strict";
+
+        document.addEventListener("click", function (event) {
+            var target = event.target;
+
+            var navLink = target.closest('a[href^="#"]');
+            if (navLink) {
+                var href = navLink.getAttribute("href");
+                if (href && href.length > 1) {
+                    var destination = document.querySelector(href);
+                    if (destination) {
+                        event.preventDefault();
+                        destination.scrollIntoView({ behavior: "smooth", block: "start" });
+                    }
+                }
+            }
+
+            var button = target.closest(".learn-more-btn");
+            if (!button) {
+                return;
+            }
+
+            var title = button.getAttribute("data-card-title") || "Feature";
+            var message = "You clicked Learn More on " + title + ".";
+
+            var container = document.getElementById("homeToastContainer");
+            if (!container) {
+                alert(message);
+                return;
+            }
+
+            var toastEl = document.createElement("div");
+            toastEl.className = "toast align-items-center text-bg-dark border-0";
+            toastEl.setAttribute("role", "alert");
+            toastEl.setAttribute("aria-live", "assertive");
+            toastEl.setAttribute("aria-atomic", "true");
+            toastEl.innerHTML =
+                '<div class="d-flex">' +
+                '<div class="toast-body">' + message + '</div>' +
+                '<button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>' +
+                '</div>';
+
+            container.appendChild(toastEl);
+
+            if (window.bootstrap && window.bootstrap.Toast) {
+                var toast = new window.bootstrap.Toast(toastEl, { delay: 2600 });
+                toastEl.addEventListener("hidden.bs.toast", function () {
+                    toastEl.remove();
+                });
+                toast.show();
+            } else {
+                alert(message);
+                toastEl.remove();
+            }
+        });
+    })();
+</script>
