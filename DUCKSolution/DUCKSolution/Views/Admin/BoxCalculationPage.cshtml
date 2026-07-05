@@ -1,5 +1,6 @@
 @{
     ViewData["Title"] = "Home Page";
+    ViewData["DisableExportCalculationScript"] = true;
 }
 
 <link rel="stylesheet" href="~/css/export-calculation.css" asp-append-version="true" />
@@ -120,5 +121,8 @@
 
 @section Scripts {
     <script src="~/js/calculationStorageHelper.js" asp-append-version="true"></script>
-    <script src="~/js/boxCalculationStorage.js" asp-append-version="true"></script>
+    <script src="~/js/toast-helper.js" asp-append-version="true"></script>
+    <script src="~/js/box-calculation.validation.js" asp-append-version="true"></script>
+    <script src="~/js/box-calculation.service.js" asp-append-version="true"></script>
+    <script src="~/js/BoxCalculationPage.js" asp-append-version="true"></script>
 }
