@@ -94,6 +94,10 @@
     padding: 0.75rem 0.5rem;
 }
 
+.app-sidebar__actions {
+    padding: 0 0.5rem 0.75rem;
+}
+
 /* Each navigation link */
 .sidebar-link {
     display: flex;
@@ -106,6 +110,12 @@
     font-weight: 500;
     text-decoration: none;
     transition: background-color 160ms ease, color 160ms ease;
+}
+
+.sidebar-link--button {
+    border: 0;
+    background: transparent;
+    text-align: left;
 }
 
 .sidebar-link i {

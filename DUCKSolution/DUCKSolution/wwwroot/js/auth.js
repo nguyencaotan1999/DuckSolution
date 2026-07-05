@@ -30,6 +30,10 @@
         });
     }
 
+    function clearClientAuthState() {
+        window.localStorage.removeItem(AUTH_KEY);
+    }
+
     function handleSignInResult() {
         if (!window.authSignInResult || !window.authSignInResult.userId) {
             return;
@@ -49,16 +53,36 @@
     }
 
     function logout(onDone) {
-        window.localStorage.removeItem(AUTH_KEY);
+        clearClientAuthState();
         if (typeof onDone === "function") {
             onDone();
         }
+    }
+
+    function wireLogoutForm() {
+        var logoutForm = document.getElementById("sidebarLogoutForm");
+        var logoutButton = document.getElementById("sidebarLogoutButton");
+        if (!logoutForm || !logoutButton || logoutForm.dataset.logoutBound === "true") {
+            return;
+        }
+
+        logoutForm.dataset.logoutBound = "true";
+        logoutForm.addEventListener("submit", function () {
+            clearClientAuthState();
+        });
+
+        logoutButton.addEventListener("click", function (event) {
+            event.preventDefault();
+            clearClientAuthState();
+            logoutForm.submit();
+        });
     }
 
     document.addEventListener("DOMContentLoaded", function () {
         wireSubmitLoading("form[asp-action='SignInPage'], form[action*='SignInPage']", "signInSubmitBtn", "Đang đăng nhập...");
         wireSubmitLoading("form[asp-action='SignUpPage'], form[action*='SignUpPage']", "signUpSubmitBtn", "Đang đăng ký...");
         handleSignInResult();
+        wireLogoutForm();
     });
 
     window.AppAuth = {

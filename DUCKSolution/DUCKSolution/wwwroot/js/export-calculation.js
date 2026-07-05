@@ -531,7 +531,11 @@ var SidebarNav;
             let best = null;
             let bestLength = -1;
             for (const link of links) {
-                const linkPath = this.normalize(new URL(link.href).pathname);
+                const href = link.getAttribute("href");
+                if (!href || href.charAt(0) === "#") {
+                    continue;
+                }
+                const linkPath = this.normalize(new URL(link.href, window.location.origin).pathname);
                 const isMatch = linkPath === currentPath ||
                     (linkPath !== "/" && currentPath.indexOf(linkPath + "/") === 0);
                 if (isMatch && linkPath.length > bestLength) {

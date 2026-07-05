@@ -1,12 +1,18 @@
 using DUCKSolution.Data;
 using DUCKSolution.Models;
 using DUCKSolution.ViewModels;
+using DUCKSolution.Security;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace DUCKSolution.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         private readonly AppDbContext _context;
@@ -18,12 +24,19 @@ namespace DUCKSolution.Controllers
             _passwordHasher = passwordHasher;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult SignInPage()
         {
+            if (User.Identity?.IsAuthenticated == true)
+            {
+                return RedirectToAction(nameof(BoxCalculationPage));
+            }
+
             return View(new SignInViewModel());
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SignInPage(SignInViewModel model)
@@ -52,6 +65,27 @@ namespace DUCKSolution.Controllers
                 return View(model);
             }
 
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.UserID.ToString()),
+                new Claim(ClaimTypes.Name, user.UserName),
+                new Claim(ClaimTypes.Email, user.UserEmail)
+            };
+
+            var principal = new ClaimsPrincipal(
+                new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme));
+
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            await HttpContext.SignInAsync(
+                CookieAuthenticationDefaults.AuthenticationScheme,
+                principal,
+                new AuthenticationProperties
+                {
+                    IsPersistent = false,
+                    AllowRefresh = true,
+                    IssuedUtc = DateTimeOffset.UtcNow
+                });
+
             ViewData["SignedInUserId"] = user.UserID;
             ViewData["SignInSuccess"] = "Đăng nhập thành công. Đang chuyển trang...";
             ViewData["RedirectUrl"] = Url.Action(nameof(BoxCalculationPage));
@@ -60,12 +94,14 @@ namespace DUCKSolution.Controllers
             return View(model);
         }
 
+        [Authorize(Policy = AppAuthorizationPolicies.RegisterAccess)]
         [HttpGet]
         public IActionResult SignUpPage()
         {
             return View(new SignUpViewModel());
         }
 
+        [Authorize(Policy = AppAuthorizationPolicies.RegisterAccess)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SignUpPage(SignUpViewModel model)
@@ -115,17 +151,20 @@ namespace DUCKSolution.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Logout()
+        public async Task<IActionResult> Logout()
         {
-            return Json(new { success = true, message = "Đăng xuất thành công." });
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction(nameof(SignInPage));
         }
 
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         [HttpGet]
         public IActionResult BoxCalculationPage()
         {
             return View();
         }
 
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         [HttpGet]
         public IActionResult DuckCalculationPage()
         {
@@ -135,7 +174,7 @@ namespace DUCKSolution.Controllers
         [HttpGet]
         public async Task<IActionResult> GetBoxData(int userId, string orderCode)
         {
-            if (!await ValidateUserExists(userId))
+            if (!await ValidateAuthenticatedUserAsync(userId))
             {
                 return Json(new { success = false, message = "Phiên đăng nhập không hợp lệ. Vui lòng đăng nhập lại." });
             }
@@ -185,7 +224,7 @@ namespace DUCKSolution.Controllers
                 return Json(new { success = false, message = GetFirstModelError() ?? "Dữ liệu không hợp lệ." });
             }
 
-            if (!await ValidateUserExists(model.UserId))
+            if (!await ValidateAuthenticatedUserAsync(model.UserId))
             {
                 return Json(new { success = false, message = "Phiên đăng nhập không hợp lệ. Vui lòng đăng nhập lại." });
             }
@@ -273,7 +312,7 @@ namespace DUCKSolution.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteBoxData(int userId, string orderCode)
         {
-            if (!await ValidateUserExists(userId) || string.IsNullOrWhiteSpace(orderCode))
+            if (!await ValidateAuthenticatedUserAsync(userId) || string.IsNullOrWhiteSpace(orderCode))
             {
                 return Json(new { success = false, message = "Yêu cầu xóa không hợp lệ." });
             }
@@ -304,7 +343,7 @@ namespace DUCKSolution.Controllers
         [HttpGet]
         public async Task<IActionResult> GetDuckData(int userId, string orderCode)
         {
-            if (!await ValidateUserExists(userId))
+            if (!await ValidateAuthenticatedUserAsync(userId))
             {
                 return Json(new { success = false, message = "Phiên đăng nhập không hợp lệ. Vui lòng đăng nhập lại." });
             }
@@ -370,7 +409,7 @@ namespace DUCKSolution.Controllers
                 return Json(new { success = false, message = GetFirstModelError() ?? "Dữ liệu không hợp lệ." });
             }
 
-            if (!await ValidateUserExists(model.UserId))
+            if (!await ValidateAuthenticatedUserAsync(model.UserId))
             {
                 return Json(new { success = false, message = "Phiên đăng nhập không hợp lệ. Vui lòng đăng nhập lại." });
             }
@@ -456,7 +495,7 @@ namespace DUCKSolution.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteDuckData(int userId, string orderCode)
         {
-            if (!await ValidateUserExists(userId) || string.IsNullOrWhiteSpace(orderCode))
+            if (!await ValidateAuthenticatedUserAsync(userId) || string.IsNullOrWhiteSpace(orderCode))
             {
                 return Json(new { success = false, message = "Yêu cầu xóa không hợp lệ." });
             }
@@ -476,14 +515,26 @@ namespace DUCKSolution.Controllers
             return Json(new { success = true, message = "Đã xóa dữ liệu Duck." });
         }
 
-        private async Task<bool> ValidateUserExists(int userId)
+        private async Task<bool> ValidateAuthenticatedUserAsync(int userId)
         {
             if (userId <= 0)
             {
                 return false;
             }
 
+            var authenticatedUserId = GetAuthenticatedUserId();
+            if (authenticatedUserId <= 0 || authenticatedUserId != userId)
+            {
+                return false;
+            }
+
             return await _context.Users.AnyAsync(u => u.UserID == userId);
+        }
+
+        private int GetAuthenticatedUserId()
+        {
+            var rawUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            return int.TryParse(rawUserId, out var userId) ? userId : 0;
         }
 
         private string? GetFirstModelError()

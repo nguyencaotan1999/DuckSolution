@@ -1,3 +1,16 @@
+@using DUCKSolution.Configuration
+@using System.Security.Claims
+@inject Microsoft.Extensions.Options.IOptions<AuthorizationSettings> AuthorizationOptions
+
+@{
+    var isAuthenticated = User.Identity?.IsAuthenticated == true;
+    var currentUserEmail = User.FindFirstValue(ClaimTypes.Email) ?? string.Empty;
+    var registerAllowedEmail = AuthorizationOptions.Value.RegisterAllowedEmail ?? string.Empty;
+    var canAccessRegister = isAuthenticated &&
+        !string.IsNullOrWhiteSpace(registerAllowedEmail) &&
+        string.Equals(currentUserEmail, registerAllowedEmail, StringComparison.OrdinalIgnoreCase);
+}
+
 @*
     Reusable sidebar navigation partial.
     Place: Views/Shared/_Sidebar.cshtml
@@ -36,20 +49,39 @@
                     <span>Tính vịt xuất chuồng</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link sidebar-link" asp-controller="Admin" asp-action="SignInPage">
-                    <i class="bi bi-box-arrow-in-right"></i>
-                    <span>Đăng nhập</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link sidebar-link" asp-controller="Admin" asp-action="SignUpPage">
-                    <i class="bi bi-person-plus"></i>
-                    <span>Đăng ký</span>
-                </a>
-            </li>
+            @if (!isAuthenticated)
+            {
+                <li class="nav-item">
+                    <a class="nav-link sidebar-link" asp-controller="Admin" asp-action="SignInPage">
+                        <i class="bi bi-box-arrow-in-right"></i>
+                        <span>Đăng nhập</span>
+                    </a>
+                </li>
+            }
+            @if (canAccessRegister)
+            {
+                <li class="nav-item">
+                    <a class="nav-link sidebar-link" asp-controller="Admin" asp-action="SignUpPage">
+                        <i class="bi bi-person-plus"></i>
+                        <span>Đăng ký</span>
+                    </a>
+                </li>
+            }
         </ul>
     </nav>
+
+    @if (isAuthenticated)
+    {
+        <div class="app-sidebar__actions">
+            <form id="sidebarLogoutForm" asp-controller="Admin" asp-action="Logout" method="post" class="m-0">
+                @Html.AntiForgeryToken()
+                <button id="sidebarLogoutButton" type="submit" class="nav-link sidebar-link sidebar-link--button w-100">
+                    <i class="bi bi-box-arrow-left"></i>
+                    <span>Đăng xuất</span>
+                </button>
+            </form>
+        </div>
+    }
 
     <div class="app-sidebar__footer">
         <small>© @DateTime.Now.Year Trại Vịt nhà Ba</small>
