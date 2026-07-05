@@ -9,6 +9,7 @@
 @Html.AntiForgeryToken()
 
 <div class="cage-page">
+    <div id="boxDraftStatusHost"></div>
     <header class="cage-page__header">
         <div class="row">
             <div class="col-6">
@@ -106,6 +107,9 @@
                 <div class="cage-summary__field">
                     <input id="saveDataBtn" class="btn btn-primary" type="button" value="Lưu dữ liệu" />
                 </div>
+                <div class="cage-summary__field">
+                    <span id="boxDraftStatus" class="small text-muted">Sẵn sàng lưu nháp localStorage.</span>
+                </div>
             </div>
         </div>
     </div>
@@ -113,3 +117,8 @@
 
 @* Toast host (Bootstrap toasts are injected here by box-calculation.ts) *@
 <div id="toastContainer" class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+
+@section Scripts {
+    <script src="~/js/calculationStorageHelper.js" asp-append-version="true"></script>
+    <script src="~/js/boxCalculationStorage.js" asp-append-version="true"></script>
+}

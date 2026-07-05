@@ -11,6 +11,10 @@
             @* Renders model-level errors (e.g. "email already exists" added in the controller) *@
             <div asp-validation-summary="ModelOnly" class="text-danger small mb-3"></div>
 
+            <div class="alert alert-info small" role="alert">
+                Mật khẩu phải có ít nhất 8 ký tự, gồm chữ hoa, chữ thường, số và ký tự đặc biệt.
+            </div>
+
             <form asp-controller="Admin" asp-action="SignUpPage" method="post" novalidate>
                 @Html.AntiForgeryToken()
 
@@ -38,7 +42,7 @@
                     <span asp-validation-for="ConfirmPassword" class="text-danger small"></span>
                 </div>
 
-                <button type="submit" class="btn btn-primary w-100">Đăng ký</button>
+                <button type="submit" id="signUpSubmitBtn" class="btn btn-primary w-100">Đăng ký</button>
 
                 <p class="text-center small mt-3 mb-0">
                     Đã có tài khoản?
@@ -51,4 +55,5 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/auth.js" asp-append-version="true"></script>
 }

@@ -7,7 +7,11 @@ namespace DUCKSolution.ViewModels
     /// </summary>
     public class BoxSaveViewModel
     {
+        [Range(1, int.MaxValue, ErrorMessage = "Thiếu người dùng đăng nhập.")]
+        public int UserId { get; set; }
+
         [Required(ErrorMessage = "Thiếu mã đơn hàng (OrderCode).")]
+        [StringLength(30, ErrorMessage = "Mã đơn hàng tối đa 30 ký tự.")]
         public string OrderCode { get; set; } = string.Empty;
 
         public List<BoxRowViewModel> Rows { get; set; } = new();

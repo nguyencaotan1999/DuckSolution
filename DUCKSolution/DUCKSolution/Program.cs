@@ -1,10 +1,13 @@
 using DUCKSolution.Data;
+using DUCKSolution.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IPasswordHasher<UserModel>, PasswordHasher<UserModel>>();
 
 // Let AJAX calls supply the anti-forgery token via a request header
 // (box-calculation.ts posts JSON to /Admin/SaveBoxData with this header).

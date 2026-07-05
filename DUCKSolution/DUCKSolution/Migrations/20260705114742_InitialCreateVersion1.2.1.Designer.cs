@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DUCKSolution.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260629135119_InitialCreateModelVer1.1")]
-    partial class InitialCreateModelVer11
+    [Migration("20260705114742_InitialCreateVersion1.2.1")]
+    partial class InitialCreateVersion121
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,12 +40,22 @@ namespace DUCKSolution.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("OrderCode")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<int?>("OrderID")
+                        .HasColumnType("int");
 
                     b.Property<int>("STT")
                         .HasColumnType("int");
 
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("OrderID");
 
                     b.ToTable("Boxes");
                 });
@@ -60,7 +70,14 @@ namespace DUCKSolution.Migrations
 
                     b.Property<string>("OrderCode")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<int?>("OrderID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("code1")
                         .HasColumnType("decimal(18,2)");
@@ -79,6 +96,8 @@ namespace DUCKSolution.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("OrderID");
+
                     b.ToTable("CodeDetails");
                 });
 
@@ -95,10 +114,20 @@ namespace DUCKSolution.Migrations
 
                     b.Property<string>("OrderCode")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("currency")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("decreaseDuck")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("price")
                         .HasColumnType("decimal(18,2)");
@@ -109,8 +138,14 @@ namespace DUCKSolution.Migrations
                     b.Property<int>("totalBox")
                         .HasColumnType("int");
 
+                    b.Property<int>("totalBoxInOneTime")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("totalBoxKg")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("totalDuckinBox")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("totalKG")
                         .HasColumnType("decimal(18,2)");
@@ -123,6 +158,8 @@ namespace DUCKSolution.Migrations
 
                     b.HasKey("OrderID");
 
+                    b.HasIndex("UserID");
+
                     b.ToTable("Orders");
                 });
 
@@ -134,25 +171,78 @@ namespace DUCKSolution.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserID"));
 
-                    b.Property<string>("OrderCode")
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("NormalizedUserEmail")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasMaxLength(512)
+                        .HasColumnType("nvarchar(512)");
 
                     b.Property<string>("UserEmail")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("UserName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserPassword")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("UserID");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("DUCKSolution.Models.Box", b =>
+                {
+                    b.HasOne("DUCKSolution.Models.OrderModel", "Order")
+                        .WithMany("Boxes")
+                        .HasForeignKey("OrderID");
+
+                    b.Navigation("Order");
+                });
+
+            modelBuilder.Entity("DUCKSolution.Models.CodeDetail", b =>
+                {
+                    b.HasOne("DUCKSolution.Models.OrderModel", "Order")
+                        .WithMany("CodeDetails")
+                        .HasForeignKey("OrderID");
+
+                    b.Navigation("Order");
+                });
+
+            modelBuilder.Entity("DUCKSolution.Models.OrderModel", b =>
+                {
+                    b.HasOne("DUCKSolution.Models.UserModel", "User")
+                        .WithMany("Orders")
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("DUCKSolution.Models.OrderModel", b =>
+                {
+                    b.Navigation("Boxes");
+
+                    b.Navigation("CodeDetails");
+                });
+
+            modelBuilder.Entity("DUCKSolution.Models.UserModel", b =>
+                {
+                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }

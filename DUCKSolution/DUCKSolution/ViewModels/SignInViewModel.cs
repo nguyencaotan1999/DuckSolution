@@ -7,10 +7,10 @@ namespace DUCKSolution.ViewModels
     /// </summary>
     public class SignInViewModel
     {
-        [Required(ErrorMessage = "Vui lòng nhập email.")]
-        [EmailAddress(ErrorMessage = "Email không hợp lệ.")]
-        [Display(Name = "Email")]
-        public string UserEmail { get; set; } = string.Empty;
+        [Required(ErrorMessage = "Vui lòng nhập tên người dùng hoặc email.")]
+        [Display(Name = "Tên người dùng / Email")]
+        [StringLength(200, ErrorMessage = "Thông tin đăng nhập tối đa 200 ký tự.")]
+        public string LoginId { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Vui lòng nhập mật khẩu.")]
         [DataType(DataType.Password)]

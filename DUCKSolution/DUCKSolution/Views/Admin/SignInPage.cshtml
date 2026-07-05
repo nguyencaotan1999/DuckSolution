@@ -8,6 +8,16 @@
         <div class="card-body p-4 p-md-5">
             <h1 class="h4 fw-bold text-center mb-4">Đăng nhập</h1>
 
+            @if (TempData["SignUpSuccess"] != null)
+            {
+                <div class="alert alert-success" role="alert">@TempData["SignUpSuccess"]</div>
+            }
+
+            @if (ViewData["SignInSuccess"] != null)
+            {
+                <div class="alert alert-success" role="alert">@ViewData["SignInSuccess"]</div>
+            }
+
             @* Renders model-level errors (e.g. "invalid credentials" added in the controller) *@
             <div asp-validation-summary="ModelOnly" class="text-danger small mb-3"></div>
 
@@ -15,9 +25,9 @@
                 @Html.AntiForgeryToken()
 
                 <div class="mb-3">
-                    <label asp-for="UserEmail" class="form-label"></label>
-                    <input asp-for="UserEmail" class="form-control" type="email" autocomplete="email" />
-                    <span asp-validation-for="UserEmail" class="text-danger small"></span>
+                    <label asp-for="LoginId" class="form-label"></label>
+                    <input asp-for="LoginId" class="form-control" autocomplete="username" />
+                    <span asp-validation-for="LoginId" class="text-danger small"></span>
                 </div>
 
                 <div class="mb-4">
@@ -26,7 +36,7 @@
                     <span asp-validation-for="UserPassword" class="text-danger small"></span>
                 </div>
 
-                <button type="submit" class="btn btn-primary w-100">Đăng nhập</button>
+                <button type="submit" id="signInSubmitBtn" class="btn btn-primary w-100">Đăng nhập</button>
 
                 <p class="text-center small mt-3 mb-0">
                     Chưa có tài khoản?
@@ -39,4 +49,14 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/auth.js" asp-append-version="true"></script>
+    @if (ViewData["SignedInUserId"] != null)
+    {
+        <script>
+            window.authSignInResult = {
+                userId: @ViewData["SignedInUserId"],
+                redirectUrl: "@ViewData["RedirectUrl"]"
+            };
+        </script>
+    }
 }

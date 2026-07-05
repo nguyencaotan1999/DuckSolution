@@ -27,7 +27,11 @@ namespace DUCKSolution.ViewModels
     /// </summary>
     public class DuckCalculationRequestDto
     {
+        [Range(1, int.MaxValue, ErrorMessage = "Thiếu người dùng đăng nhập.")]
+        public int UserId { get; set; }
+
         [Required(ErrorMessage = "Vui lòng nhập mã đơn hàng.")]
+        [StringLength(30, ErrorMessage = "Mã đơn hàng tối đa 30 ký tự.")]
         public string OrderCode { get; set; } = string.Empty;
 
         // ---- OrderModel fields ----

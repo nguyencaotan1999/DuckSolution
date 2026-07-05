@@ -9,6 +9,7 @@
 @Html.AntiForgeryToken()
 
 <div class="duck-page">
+    <div id="duckDraftStatusHost"></div>
     <header class="duck-page__header">
         <div class="row">
             <div class="col-6">
@@ -90,6 +91,9 @@
                 <div class="duck-summary__field">
                     <input id="saveDataBtnDuckPage" class="btn btn-primary" type="button" value="Lưu dữ liệu" />
                 </div>
+                <div class="duck-summary__field">
+                    <span id="duckDraftStatus" class="small text-muted">Sẵn sàng lưu nháp localStorage.</span>
+                </div>
             </div>
         </div>
     </div>
@@ -117,5 +121,7 @@
 <div id="toastContainer" class="toast-container position-fixed bottom-0 end-0 p-3"></div>
 
 @section Scripts {
+    <script src="~/js/calculationStorageHelper.js" asp-append-version="true"></script>
+    <script src="~/js/duckCalculationStorage.js" asp-append-version="true"></script>
     <script src="~/js/duckCalculationPage.js" asp-append-version="true"></script>
 }

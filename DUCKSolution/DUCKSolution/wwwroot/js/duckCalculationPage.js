@@ -6,6 +6,8 @@
 (function () {
     "use strict";
 
+    var helper = window.CalculationStorageHelper;
+
     // ---- Endpoints ----
     var FETCH_URL = "/Admin/GetDuckData";
     var SAVE_URL = "/Admin/SaveDuckData";
@@ -152,6 +154,11 @@
     // ---- Validation -------------------------------------------------------
 
     function validateFetch() {
+        if (!helper || !helper.getLoggedInUserId()) {
+            showToast("Phiên đăng nhập không hợp lệ. Vui lòng đăng nhập lại.", "warning");
+            return false;
+        }
+
         var code = getValue(IDS.orderCode);
         if (!code) {
             showToast("Vui lòng nhập mã đơn hàng.", "warning");
@@ -226,6 +233,11 @@
     }
 
     function validateSave() {
+        if (!helper || !helper.getLoggedInUserId()) {
+            showToast("Phiên đăng nhập không hợp lệ. Vui lòng đăng nhập lại.", "warning");
+            return false;
+        }
+
         if (!getValue(IDS.orderCode)) {
             showToast("Vui lòng nhập mã đơn hàng.", "warning");
             return false;
@@ -259,7 +271,9 @@
 
     function collectFormData(codeDetails) {
         var first = (codeDetails && codeDetails.length > 0) ? codeDetails[0] : null;
+        var userId = helper ? helper.getLoggedInUserId() : null;
         return {
+            userId: userId,
             orderCode: getValue(IDS.orderCode),
             totalDuckinBox: parseNumber(IDS.totalDuckinBox),
             totalBoxInOneTime: parseNumber(IDS.totalBoxInOneTime),
@@ -348,10 +362,11 @@
         }
 
         var fetchBtn = byId(IDS.fetchBtn);
+        var userId = helper ? helper.getLoggedInUserId() : null;
         var code = getValue(IDS.orderCode);
         setButtonLoading(fetchBtn, true, "Đang tải...");
 
-        fetch(FETCH_URL + "?orderCode=" + encodeURIComponent(code), {
+        fetch(FETCH_URL + "?userId=" + encodeURIComponent(String(userId || "")) + "&orderCode=" + encodeURIComponent(code), {
             headers: { "Accept": "application/json" }
         })
             .then(function (res) {
@@ -363,6 +378,15 @@
             .then(function (data) {
                 if (!data || !data.success) {
                     renderCodeDetailsRows([]);
+                    if (helper && userId) {
+                        var restored = false;
+                        if (window.DuckCalculationStorage && typeof window.DuckCalculationStorage.restoreDraft === "function") {
+                            restored = window.DuckCalculationStorage.restoreDraft(code);
+                        }
+                        if (!restored) {
+                            helper.setStatus("duckDraftStatus", data && data.message ? data.message : "Không tìm thấy dữ liệu.", "warning");
+                        }
+                    }
                     showToast(data && data.message ? data.message : "Không tìm thấy dữ liệu.", "warning");
                     return;
                 }
@@ -377,9 +401,15 @@
                 }
 
                 showToast(data.message || "Đã tải dữ liệu thành công.", "success");
+                if (helper) {
+                    helper.setStatus("duckDraftStatus", "Đã tải dữ liệu từ cơ sở dữ liệu.", "success");
+                }
             })
             .catch(function () {
                 showToast("Không thể kết nối tới máy chủ. Vui lòng thử lại.", "error");
+                if (helper && userId) {
+                    helper.setStatus("duckDraftStatus", "Không thể kết nối cơ sở dữ liệu. Thử khôi phục localStorage...", "warning");
+                }
             })
             .finally(function () {
                 setButtonLoading(fetchBtn, false);
@@ -411,6 +441,7 @@
                 "RequestVerificationToken": getAntiForgeryToken()
             },
             body: JSON.stringify({
+                userId: payload.userId,
                 orderCode: payload.orderCode,
                 totalDuckinBox: payload.totalDuckinBox,
                 totalBoxInOneTime: payload.totalBoxInOneTime,
@@ -434,8 +465,17 @@
             .then(function (data) {
                 if (data && data.success) {
                     showToast(data.message || "Đã lưu dữ liệu thành công.", "success");
+                    if (helper) {
+                        helper.setStatus("duckDraftStatus", "Đã lưu dữ liệu vào cơ sở dữ liệu.", "success");
+                    }
+                    if (window.DuckCalculationStorage && typeof window.DuckCalculationStorage.clearDraftForOrder === "function") {
+                        window.DuckCalculationStorage.clearDraftForOrder(payload.orderCode);
+                    }
                 } else {
                     showToast(data && data.message ? data.message : "Lưu dữ liệu thất bại.", "error");
+                    if (helper) {
+                        helper.setStatus("duckDraftStatus", data && data.message ? data.message : "Lưu dữ liệu thất bại.", "error");
+                    }
                 }
             })
             .catch(function () {
