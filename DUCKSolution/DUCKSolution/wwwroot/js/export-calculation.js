@@ -267,7 +267,7 @@ var DuckCalculation;
         return Number.isFinite(value) ? value : 0;
     }
     function isFilled(input) {
-        return input.value.trim() !== "";
+        return input.value.trim() !== "" && parseFloat(input.value) !== 0;
     }
     function limitDigits(input, maxDigits) {
 

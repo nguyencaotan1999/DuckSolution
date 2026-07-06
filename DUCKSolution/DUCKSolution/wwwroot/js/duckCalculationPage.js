@@ -34,6 +34,15 @@
         var el = byId(id);
         return el ? String(el.value).trim() : "";
     }
+    var showLoading = function () {
+        $("#loadingBar").css("display", "flex");
+        $("#loadingBar").fadeIn()
+    }
+
+    var hideLoading = function () {
+        $("#loadingBar").css("display", "none");
+        $("#loadingBar").fadeOut()
+    }
 
     function setValue(id, value) {
         var el = byId(id);
@@ -364,6 +373,7 @@
         var fetchBtn = byId(IDS.fetchBtn);
         var userId = helper ? helper.getLoggedInUserId() : null;
         var code = getValue(IDS.orderCode);
+        showLoading();
         setButtonLoading(fetchBtn, true, "Đang tải...");
 
         fetch(FETCH_URL + "?userId=" + encodeURIComponent(String(userId || "")) + "&orderCode=" + encodeURIComponent(code), {
@@ -413,6 +423,7 @@
             })
             .finally(function () {
                 setButtonLoading(fetchBtn, false);
+                hideLoading();
             });
     }
 
@@ -431,6 +442,7 @@
 
         var saveBtn = byId(IDS.saveBtn);
         var payload = collectFormData(detailsResult.codeDetails);
+        showLoading();
         setButtonLoading(saveBtn, true, "Đang lưu...");
 
         fetch(SAVE_URL, {
@@ -483,6 +495,8 @@
             })
             .finally(function () {
                 setButtonLoading(saveBtn, false);
+                hideLoading();
+
             });
     }
 

@@ -22,7 +22,13 @@
 
     @* Dimmed overlay shown behind the sidebar on mobile *@
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
+    <div id="loadingBar" class="content container-fluid" style="width:100% !important">
+        <div id="loadingCenter" style="padding-top:250px">
+            <div class="spinner-grow text-secondary"></div>
+            <div class="spinner-grow text-dark"></div>
+            <div class="spinner-grow text-light"></div>
+        </div>
+    </div>
     @* Main content area; shifts right of the sidebar on desktop *@
     <div class="app-content" id="appContent">
         @* Mobile-only top bar containing the hamburger toggle *@

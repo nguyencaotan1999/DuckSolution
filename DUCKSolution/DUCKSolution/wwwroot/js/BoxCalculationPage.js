@@ -39,6 +39,15 @@
     function formatTotal(total) {
         return Number(total.toFixed(2)).toString();
     }
+    var showLoading = function () {
+        $("#loadingBar").css("display", "flex");
+        $("#loadingBar").fadeIn()
+    }
+
+    var hideLoading = function () {
+        $("#loadingBar").css("display", "none");
+        $("#loadingBar").fadeOut()
+    }
 
     function setStatus(message, type) {
         helper.setStatus("boxDraftStatus", message, type);
@@ -234,7 +243,7 @@
             window.showWarningToast(orderCheck.message);
             return;
         }
-
+        showLoading();
         setButtonLoading(elements.fetchBtn, true, "Đang tải...");
         service.setLastOrder(pageState.userId, orderCheck.value);
 
@@ -270,6 +279,7 @@
             })
             .finally(function () {
                 setButtonLoading(elements.fetchBtn, false);
+                hideLoading();
             });
     }
 
@@ -283,7 +293,7 @@
             window.showWarningToast(validationResult.message);
             return;
         }
-
+        showLoading();
         setButtonLoading(elements.saveBtn, true, "Đang lưu...");
         service.setLastOrder(pageState.userId, orderCode);
 
@@ -314,6 +324,7 @@
             })
             .finally(function () {
                 setButtonLoading(elements.saveBtn, false);
+                hideLoading();
             });
     }
 
