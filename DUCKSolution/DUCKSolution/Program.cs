@@ -84,7 +84,7 @@ app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Admin}/{action=BoxCalculationPage}/{id?}")
+    pattern: "{controller=Home}/{action=HomePage}/{id?}")
     .WithStaticAssets();
 
 
