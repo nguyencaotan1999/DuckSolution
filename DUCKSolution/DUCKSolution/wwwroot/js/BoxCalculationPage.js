@@ -306,7 +306,7 @@
         }
         var CheckCodeExisting = await service.loadOrderData(pageState.userId, orderCheck.value)
             .then(function (result) {
-                if (!result.success) {s
+                if (!result.success) {
                     return false;
                 }
                 return true;

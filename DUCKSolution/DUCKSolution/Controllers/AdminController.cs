@@ -88,7 +88,7 @@ namespace DUCKSolution.Controllers
 
             ViewData["SignedInUserId"] = user.UserID;
             ViewData["SignInSuccess"] = "Đăng nhập thành công. Đang chuyển trang...";
-            ViewData["RedirectUrl"] = Url.Action(nameof(BoxCalculationPage));
+            ViewData["RedirectUrl"] = Url.Action(nameof(HomeController.HomePage), "Home");
 
             model.UserPassword = string.Empty;
             return View(model);

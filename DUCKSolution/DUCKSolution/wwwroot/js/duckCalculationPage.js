@@ -433,6 +433,8 @@
         if (!validateSave()) {
             return;
         }
+
+        var OrderCodeValue = document.querySelector("#orderCodeDuckPage").value;
         var userId = helper ? helper.getLoggedInUserId() : null;
         var code = getValue(IDS.orderCode);
         var detailsResult = collectCodeDetailsRows();
@@ -446,15 +448,14 @@
         showLoading();
         setButtonLoading(saveBtn, true, "Đang lưu...");
 
-        var checkDuckCodeExisting = await fetch(FETCH_URL + "?userId=" + encodeURIComponent(String(userId || "")) + "&orderCode=" + encodeURIComponent(code), {
+        var checkDuckCodeExisting = await fetch(FETCH_URL + "?userId=" + encodeURIComponent(String(userId || "")) + "&orderCode=" + encodeURIComponent(OrderCodeValue), {
             headers: { "Accept": "application/json" }
         })
             .then(function (res) {
                 if (!res.ok) {
                     throw new Error("HTTP " + res.status);
-                    return false;
                 }
-                return true;
+                return res.json();
             })
             .then(function (data) {
                 if (!data || !data.success) {

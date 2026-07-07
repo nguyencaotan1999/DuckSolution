@@ -19,6 +19,16 @@
         return tokenInput ? tokenInput.value : "";
     }
 
+    var showLoading = function () {
+        $("#loadingBar").css("display", "flex");
+        $("#loadingBar").fadeIn()
+    }
+
+    var hideLoading = function () {
+        $("#loadingBar").css("display", "none");
+        $("#loadingBar").fadeOut()
+    }
+
     function showHomeToast(message, kind) {
         var type = kind || "info";
 
@@ -142,6 +152,7 @@
     }
 
     function createOrderCode() {
+        showLoading();
         var createButton = byId("btncreateOrderCode");
         var orderCodeInput = byId("orderCodeinput");
 
@@ -198,6 +209,7 @@
                 if (!response.ok) {
                     throw new Error("HTTP " + response.status);
                 }
+                hideLoading();
                 return response.json();
             })
             .then(function (data) {
@@ -206,12 +218,14 @@
                 if (data && data.success) {
                     showHomeToast(data.message || "Tạo mã đơn hàng thành công.", "success");
                     orderCodeInput.value = "";
+                    hideLoading();
                     return;
                 }
-
+                hideLoading();
                 showHomeToast((data && data.message) ? data.message : "Tạo mã đơn hàng thất bại.", "error");
             })
             .catch(function (error) {
+                hideLoading();
                 console.error("[homePage] Create order failed", error);
                 showHomeToast("Không thể tạo mã đơn hàng. Vui lòng thử lại.", "error");
             })
@@ -221,7 +235,9 @@
                 if (typeof window.hideGlobalLoading === "function") {
                     window.hideGlobalLoading();
                 }
+                hideLoading();
             });
+
     }
 
     document.addEventListener("click", function (event) {
