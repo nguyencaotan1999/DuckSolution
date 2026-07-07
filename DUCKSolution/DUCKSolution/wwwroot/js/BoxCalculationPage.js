@@ -283,8 +283,10 @@
             });
     }
 
-    function handleSave() {
+    async function handleSave() {
         var orderCode = getOrderCode();
+        var orderCheck = validation.validateOrderCode(orderCode);
+
         var rows = readRows();
         var validationResult = service.validateBeforeSave(orderCode, rows);
 
@@ -297,35 +299,61 @@
         setButtonLoading(elements.saveBtn, true, "Đang lưu...");
         service.setLastOrder(pageState.userId, orderCode);
 
-        service.saveOrderData(pageState.userId, orderCode, rows)
+        if (!orderCheck.isValid) {
+            setStatus(orderCheck.message, "warning");
+            window.showWarningToast(orderCheck.message);
+            return;
+        }
+        var CheckCodeExisting = await service.loadOrderData(pageState.userId, orderCheck.value)
             .then(function (result) {
-                if (!result.success) {
-                    setStatus(result.message, "error");
-                    window.showErrorToast(result.message);
-                    return;
+                if (!result.success) {s
+                    return false;
                 }
-
-                if (elements.totalBox && typeof result.totalBox === "number") {
-                    elements.totalBox.value = formatTotal(result.totalBox);
-                }
-
-                if (elements.totalBoxKg && typeof result.totalBoxKg === "number") {
-                    elements.totalBoxKg.value = formatTotal(result.totalBoxKg);
-                }
-
-                service.clearDraft(pageState.userId, orderCode);
-                setStatus("Đã lưu dữ liệu vào cơ sở dữ liệu.", "success");
-                window.showSuccessToast(result.message);
+                return true;
             })
             .catch(function (error) {
-                console.error("SaveBoxData failed.", error);
-                setStatus("Không thể lưu dữ liệu vào cơ sở dữ liệu.", "error");
-                window.showErrorToast("Không thể lưu dữ liệu. Vui lòng thử lại.");
+                console.error("GetBoxData failed.", error);
             })
             .finally(function () {
-                setButtonLoading(elements.saveBtn, false);
-                hideLoading();
             });
+
+        if (CheckCodeExisting) {
+            await service.saveOrderData(pageState.userId, orderCode, rows)
+                .then(function (result) {
+                    if (!result.success) {
+                        setStatus(result.message, "error");
+                        window.showErrorToast(result.message);
+                        return;
+                    }
+
+                    if (elements.totalBox && typeof result.totalBox === "number") {
+                        elements.totalBox.value = formatTotal(result.totalBox);
+                    }
+
+                    if (elements.totalBoxKg && typeof result.totalBoxKg === "number") {
+                        elements.totalBoxKg.value = formatTotal(result.totalBoxKg);
+                    }
+
+                    service.clearDraft(pageState.userId, orderCode);
+                    setStatus("Đã lưu dữ liệu vào cơ sở dữ liệu.", "success");
+                    window.showSuccessToast(result.message);
+                })
+                .catch(function (error) {
+                    console.error("SaveBoxData failed.", error);
+                    setStatus("Không thể lưu dữ liệu vào cơ sở dữ liệu.", "error");
+                    window.showErrorToast("Không thể lưu dữ liệu. Vui lòng thử lại.");
+                })
+                .finally(function () {
+                    setButtonLoading(elements.saveBtn, false);
+                    hideLoading();
+                });
+        } else {
+            setButtonLoading(elements.saveBtn, false);
+            hideLoading();
+            window.showWarningToast("Lưu thất bại......Không tìm thấy mã đơn hàng của người dùng hiện tại");
+        }
+
+        
     }
 
     function onTableInput(event) {

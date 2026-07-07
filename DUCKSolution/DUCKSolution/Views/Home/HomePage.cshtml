@@ -4,6 +4,9 @@
 @{
     ViewData["Title"] = "Home";
 }
+@* Anti-forgery token: read by duckCalculationPage.js and sent as the
+   RequestVerificationToken header when POSTing to /Admin/SaveDuckData. *@
+@Html.AntiForgeryToken()
 
 <main class="home-page" aria-label="Duck Audit homepage">
     <section class="home-hero py-5 py-lg-6" style="border-radius:40px;margin:10px;padding:10px">
@@ -42,7 +45,7 @@
                             <i class="bi bi-database-fill-gear"></i>
                         </div>
                         <h3 class="feature-title">Tạo mã đơn hàng</h3>
-                        <input class="form-control" type="text" maxlength="10" />
+                        <input id="orderCodeinput" class="form-control" type="text" maxlength="10" />
                         <div class="row" style="text-align:center; margin-top: 10px;padding:10px">
                             <button class="btn btn-dark learn-more-btn mt-auto" data-card-title="Data Management" aria-label="Learn more about Data Management">
                                 Tạo mã đơn hàng
@@ -244,62 +247,12 @@
     }
 </style>
 
-<script>
-    (function () {
-        "use strict";
-
-        document.addEventListener("click", function (event) {
-            var target = event.target;
-
-            var navLink = target.closest('a[href^="#"]');
-            if (navLink) {
-                var href = navLink.getAttribute("href");
-                if (href && href.length > 1) {
-                    var destination = document.querySelector(href);
-                    if (destination) {
-                        event.preventDefault();
-                        destination.scrollIntoView({ behavior: "smooth", block: "start" });
-                    }
-                }
-            }
-
-            var button = target.closest(".learn-more-btn");
-            if (!button) {
-                return;
-            }
-
-            var title = button.getAttribute("data-card-title") || "Feature";
-            var message = "You clicked Learn More on " + title + ".";
-
-            var container = document.getElementById("homeToastContainer");
-            if (!container) {
-                alert(message);
-                return;
-            }
-
-            var toastEl = document.createElement("div");
-            toastEl.className = "toast align-items-center text-bg-dark border-0";
-            toastEl.setAttribute("role", "alert");
-            toastEl.setAttribute("aria-live", "assertive");
-            toastEl.setAttribute("aria-atomic", "true");
-            toastEl.innerHTML =
-                '<div class="d-flex">' +
-                '<div class="toast-body">' + message + '</div>' +
-                '<button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>' +
-                '</div>';
-
-            container.appendChild(toastEl);
-
-            if (window.bootstrap && window.bootstrap.Toast) {
-                var toast = new window.bootstrap.Toast(toastEl, { delay: 2600 });
-                toastEl.addEventListener("hidden.bs.toast", function () {
-                    toastEl.remove();
-                });
-                toast.show();
-            } else {
-                alert(message);
-                toastEl.remove();
-            }
-        });
-    })();
-</script>
+@section Scripts {
+    <script src="~/js/homePage.js" asp-append-version="true"></script>
+    <script>
+        window.authSignInResult = {
+            userId: @ViewData["SignedInUserId"],
+            redirectUrl: "@ViewData["RedirectUrl"]"
+        };
+    </script>
+}
