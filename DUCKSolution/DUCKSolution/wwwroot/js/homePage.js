@@ -113,6 +113,30 @@
             button.textContent = button.dataset.originalText;
         }
     }
+    function loadOrderData(userId, orderCode) {
+        return fetch("/Admin/GetBoxData?userId=" + encodeURIComponent(String(userId)) + "&orderCode=" + encodeURIComponent(orderCode), {
+            headers: {
+                "Accept": "application/json"
+            }
+        })
+            .then(function (response) {
+                if (!response.ok) {
+                    throw new Error("GetBoxData request failed with status " + response.status + ".");
+                }
+
+                return response.json();
+            })
+            .then(function (data) {
+                return {
+                    success: !!(data && data.success),
+                    message: data && data.message ? data.message : "Không có dữ liệu.",
+                    boxes: data && Array.isArray(data.boxes) ? data.boxes : [],
+                    totalBox: data ? data.totalBox : 0,
+                    totalBoxKg: data ? data.totalBoxKg : 0,
+                    raw: data
+                };
+            });
+    }
 
     // Resolve UserId using existing project auth/session patterns only.
     // Priority order:
@@ -151,18 +175,13 @@
         return resolvedUserId;
     }
 
-    function createOrderCode() {
-        showLoading();
+    async function createOrderCode() {
+
         var createButton = byId("btncreateOrderCode");
         var orderCodeInput = byId("orderCodeinput");
 
         if (!createButton || !orderCodeInput) {
             console.error("[homePage] Missing #btncreateOrderCode or #orderCodeinput.");
-            return;
-        }
-
-        if (pageState.isCreatingOrder) {
-            console.warn("[homePage] Ignored duplicate create request.");
             return;
         }
 
@@ -195,49 +214,71 @@
         }
 
         console.log("[homePage] Sending create order request", { orderCode: orderCode, userId: userId });
-
-        fetch(CREATE_ORDER_URL, {
-            method: "POST",
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-                "RequestVerificationToken": antiForgeryToken
-            },
-            body: body.toString()
-        })
-            .then(function (response) {
-                if (!response.ok) {
-                    throw new Error("HTTP " + response.status);
+        showLoading();
+        var CheckCodeExisting = await loadOrderData(userId, orderCode)
+            .then(function (result) {
+                if (!result.success) {
+                    return false;
                 }
-                hideLoading();
-                return response.json();
-            })
-            .then(function (data) {
-                console.log("[homePage] Create order response", data);
-
-                if (data && data.success) {
-                    showHomeToast(data.message || "Tạo mã đơn hàng thành công.", "success");
-                    orderCodeInput.value = "";
-                    hideLoading();
-                    return;
-                }
-                hideLoading();
-                showHomeToast((data && data.message) ? data.message : "Tạo mã đơn hàng thất bại.", "error");
+                return true;
             })
             .catch(function (error) {
-                hideLoading();
-                console.error("[homePage] Create order failed", error);
-                showHomeToast("Không thể tạo mã đơn hàng. Vui lòng thử lại.", "error");
+                console.error("GetBoxData failed.", error);
             })
             .finally(function () {
-                pageState.isCreatingOrder = false;
-                setCreateButtonState(createButton, false);
-                if (typeof window.hideGlobalLoading === "function") {
-                    window.hideGlobalLoading();
-                }
-                hideLoading();
             });
 
+        if (!CheckCodeExisting) {
+            fetch(CREATE_ORDER_URL, {
+                method: "POST",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+                    "RequestVerificationToken": antiForgeryToken
+                },
+                body: body.toString()
+            })
+                .then(function (response) {
+                    if (!response.ok) {
+                        throw new Error("HTTP " + response.status);
+                    }
+                    return response.json();
+                })
+                .then(function (data) {
+                    console.log("[homePage] Create order response", data);
+
+                    if (data && data.success) {
+                        showHomeToast(data.message || "Tạo mã đơn hàng thành công.", "success");
+                        hideLoading();
+                        return;
+                    }
+                    hideLoading();
+                    showHomeToast((data && data.message) ? data.message : "Tạo mã đơn hàng thất bại.", "error");
+                })
+                .catch(function (error) {
+                    hideLoading();
+                    console.error("[homePage] Create order failed", error);
+                    showHomeToast("Không thể tạo mã đơn hàng. Vui lòng thử lại.", "error");
+                    setCreateButtonState(createButton, false);
+
+                })
+                .finally(function () {
+                    pageState.isCreatingOrder = false;
+                    setCreateButtonState(createButton, false);
+                    if (typeof window.hideGlobalLoading === "function") {
+                        window.hideGlobalLoading();
+                    }
+                    hideLoading();
+                    setCreateButtonState(createButton, false);
+
+                });
+        } else {
+            showHomeToast("Mã đơn hàng đã tồn tại. Vui lòng tạo mã khác", "error");
+            hideLoading();
+            setCreateButtonState(createButton, false);
+
+        }
+        
     }
 
     document.addEventListener("click", function (event) {
@@ -268,24 +309,7 @@
         }
 
         var title = button.getAttribute("data-card-title") || "Feature";
-        var message = "You clicked Learn More on " + title + ".";
-        //window.showSuccessToast("Đã khôi phục dữ liệu nháp từ localStorage.");
-        //if (title === 'Data Management') {
-        //    var orderCode = document.getElementById("orderCodeinput");
-        //    pageState.userId = helper.requireLoggedInOrRedirect("/Admin/SignInPage", "boxDraftStatusHost");
-        //    if (orderCode !== null || userId !== 0) {
-
-
-        //    } else {
-        //        if (orderCode === "") {
-        //        //    window.showWarningToast("Vui Lòng nhập mã đơn hàng.");
-        //        }
-        //        else {
-        //        //    window.showWarningToast("Vui Lòng đăng nhập trước khi tạo");
-        //        }
-                
-        //    }
-        //}
+        
 
         showHomeToast(message, "info");
     });
