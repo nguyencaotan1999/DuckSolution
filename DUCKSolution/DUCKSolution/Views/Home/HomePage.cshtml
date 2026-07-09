@@ -14,15 +14,15 @@
             <div class="row align-items-center g-4 g-lg-5">
                 <div class="col-12 col-lg-7">
                     <span class="hero-badge">Duck Audit Platform</span>
-                    <h1 class="hero-title mt-3 mb-3">Trang trại vịt Ba tuii</h1>
+                    <h1 class="hero-title mt-3 mb-3">Trang trại vịt</h1>
                     <p class="hero-subtitle mb-4">
-                        Hệ thống tính toán vịt khi xuất chuồng của ba Cường mẹ Hoa.
+                        Hệ thống tính toán và lưu trữ vịt khi xuất chuồng.
                     </p>
-                    <a href="#features" class="btn btn-dark btn-lg hero-cta" aria-label="Explore system features">GO......</a>
+                    <a href="#features" class="btn btn-dark btn-lg hero-cta" aria-label="Explore system features">Di chuyển đến tạo đơn hàng</a>
                 </div>
                 <div class="col-12 col-lg-5">
                     <div class="hero-visual" role="img" aria-label="Illustration representing duck farm operations and analytics">
-                        <i class="bi bi-egg-fried"></i>
+                        <img class="duck-icon" src="/img/icon/duck.png" alt="Rubber Duck" >
                     </div>
                 </div>
             </div>
@@ -31,20 +31,13 @@
 
     <section id="features" class="features-section py-5">
         <div class="container">
-            <div class="text-center mb-4 mb-lg-5">
-                <h2 class="section-title">Welcome to Trang trại vịt Ba tuii</h2>
-                <p class="section-subtitle mb-0">
-                    chọn phương thức tính toán.
-                </p>
-            </div>
-
             <div class="row g-4">
                 <div class="col-12 col-md-6 col-lg-4 d-flex">
                     <article class="feature-card w-100" aria-label="Data Management feature">
                         <div class="feature-image-box" role="img" aria-label="Data management icon area">
                             <i class="bi bi-database-fill-gear"></i>
                         </div>
-                        <h3 class="feature-title">Tạo mã đơn hàng</h3>
+                        <h4 class="feature-title">Tạo mã đơn hàng</h4>
                         <input id="orderCodeinput" inputmode="decimal" class="form-control" type="text" maxlength="10" />
                         <div class="row" style="text-align:center; margin-top: 10px;padding:10px">
                             <button id="btncreateOrderCode" class="btn btn-dark learn-more-btn mt-auto" data-card-title="Data Management" aria-label="Learn more about Data Management">
@@ -59,12 +52,12 @@
                         <div class="feature-image-box" role="img" aria-label="Duck farm audit icon area">
                             <i class="bi bi-clipboard2-check"></i>
                         </div>
-                        <h3 class="feature-title">Tính Lồng</h3>
+                        <h4 class="feature-title">Tính Lồng</h4>
                         <p class="feature-text">
-                            Quản lý và tính số lồng 
+                            Quản lý và tính số lồng
                         </p>
                         <button onclick="window.location.href='/Admin/BoxCalculationPage'" class="btn btn-dark learn-more-btn mt-auto" data-card-title="Duck Farm Audit" aria-label="Learn more about Duck Farm Audit">
-                            Go...
+                            Bắt đầu....
                         </button>
                     </article>
                 </div>
@@ -74,13 +67,35 @@
                         <div class="feature-image-box" role="img" aria-label="Box calculation icon area">
                             <i class="bi bi-calculator"></i>
                         </div>
-                        <h3 class="feature-title">Tính vịt xuất chuồng</h3>
+                        <h4 class="feature-title">Tính vịt xuất chuồng</h4>
                         <p class="feature-text">
-                            quản lý và tính số vịt xuất chuồng.
+                            Quản lý và tính số vịt xuất chuồng.
                         </p>
                         <button onclick="window.location.href='/Admin/DuckCalculationPage'" class="btn btn-dark learn-more-btn mt-auto" data-card-title="Box Calculation" aria-label="Learn more about Box Calculation">
-                            Go...
+                            Bắt đầu....
                         </button>
+                    </article>
+                </div>
+
+                
+            </div>
+
+
+            <div class="row g-4 mt-3">
+                <div class="col-12 col-md-6 col-lg-4 d-flex">
+                    <article class="feature-card w-100" aria-label="Data Management feature">
+                        <img class="family-picture" src="/img/2ebf63c6cc2c4d72143d1.jpg" alt="Rubber Duck">
+                    </article>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 d-flex">
+                    <article class="feature-card w-100" aria-label="Duck Farm Audit feature">
+                        <img class="family-picture" src="/img/6da5fe9a5170d02e8961.jpg" alt="Rubber Duck">
+                    </article>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4 d-flex">
+                    <article class="feature-card w-100" aria-label="Box Calculation feature">
+                        <img class="family-picture" src="/img/deb1e5ca4a20cb7e92313.jpg" alt="Rubber Duck">
                     </article>
                 </div>
 
@@ -103,9 +118,26 @@
         padding-top: 5rem;
         padding-bottom: 5rem;
     }
+    
+    .duck-icon {
+        display: block;
+        width: 25%;
+        height: 25%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain; /* Giữ tỷ lệ ảnh */
+    }
+    .family-picture{
+     display: block;
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
 
     .home-hero {
-        background: linear-gradient(135deg, #f7c600 0%, #f3b304 100%);
+        background: linear-gradient(135deg, #999999 0%, #CC99FF 100%);
         color: #1a1a1a;
     }
 
@@ -170,7 +202,7 @@
     }
 
     .feature-card {
-        background: #f7c600;
+        background: linear-gradient(135deg, #999999 0%, #CC99FF 100%);
         border-radius: 1rem;
         box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
         padding: 1.15rem;
@@ -183,7 +215,7 @@
     .feature-card:hover,
     .feature-card:focus-within {
         transform: translateY(-8px);
-        box-shadow: 0 18px 34px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 18px 34px #d09300;
     }
 
     .feature-image-box {
@@ -205,13 +237,13 @@
         font-size: 1.15rem;
         font-weight: 800;
         letter-spacing: 0.03em;
-        color: #1f2937;
+        color: #444444;
         margin-bottom: 0.7rem;
         text-transform: uppercase;
     }
 
     .feature-text {
-        color: #1f2937;
+        color: #444444;
         line-height: 1.55;
         margin-bottom: 1rem;
         flex-grow: 1;
