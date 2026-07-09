@@ -79,8 +79,8 @@
 
     function createRow(row) {
         var tableRow = document.createElement("tr");
-        var boxNumber = row && Number.isFinite(Number(row.boxNubmer)) ? Number(row.boxNubmer) : "";
-        var boxWeight = row && Number.isFinite(Number(row.boxWeight)) ? Number(row.boxWeight) : "";
+        var boxNumber = row && Number.isFinite(Number(row.boxNubmer)) && row.boxNubmer !== 0 ? Number(row.boxNubmer) : "";
+        var boxWeight = row && Number.isFinite(Number(row.boxWeight)) && row.boxWeight !== 0 ? Number(row.boxWeight) : "";
 
         tableRow.innerHTML =
             '<td class="box-row__index"></td>' +
