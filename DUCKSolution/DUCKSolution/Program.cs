@@ -44,7 +44,7 @@ builder.Services.AddAuthorization(options =>
 builder.Services.AddAntiforgery(options => options.HeaderName = "RequestVerificationToken");
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+options.UseSqlServer(builder.Configuration.GetConnectionString("AzureConnection")));
 
 
 var app = builder.Build();
