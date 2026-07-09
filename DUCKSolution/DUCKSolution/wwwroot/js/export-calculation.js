@@ -556,8 +556,9 @@ var SidebarNav;
         const sidebar = document.getElementById("appSidebar");
         const overlay = document.getElementById("sidebarOverlay");
         const toggleBtn = document.getElementById("sidebarToggle");
-        if (sidebar && overlay && toggleBtn) {
+        if (sidebar && overlay && toggleBtn && !window.__duckSidebarInitialized) {
             new Sidebar(sidebar, overlay, toggleBtn).init();
+            window.__duckSidebarInitialized = true;
         }
     });
 })(SidebarNav || (SidebarNav = {}));
