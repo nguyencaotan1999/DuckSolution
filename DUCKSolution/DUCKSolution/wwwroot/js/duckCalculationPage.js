@@ -313,11 +313,11 @@
             var row = document.createElement("tr");
             row.innerHTML =
                 '<td class="duck-row__index"><span class="duck-row__no">' + (i + 1) + "</span></td>" +
-                '<td><input type="number" class="form-control duck-input duck-code" min="0" step="1" placeholder="0" aria-label="Mã 1" value="' + (item.code1 !== undefined && item.code1 !== null ? item.code1 : "") + '"></td>' +
-                '<td><input type="number" class="form-control duck-input duck-code" min="0" step="1" placeholder="0" aria-label="Mã 2" value="' + (item.code2 !== undefined && item.code2 !== null ? item.code2 : "") + '"></td>' +
-                '<td><input type="number" class="form-control duck-input duck-code" min="0" step="1" placeholder="0" aria-label="Mã 3" value="' + (item.code3 !== undefined && item.code3 !== null ? item.code3 : "") + '"></td>' +
-                '<td><input type="number" class="form-control duck-input duck-code" min="0" step="1" placeholder="0" aria-label="Mã 4" value="' + (item.code4 !== undefined && item.code4 !== null ? item.code4 : "") + '"></td>' +
-                '<td><input type="number" class="form-control duck-input duck-code" min="0" step="1" placeholder="0" aria-label="Mã 5" value="' + (item.code5 !== undefined && item.code5 !== null ? item.code5 : "") + '"></td>' +
+                '<td><input type="number" inputmode="decimal" class="form-control duck-input duck-code" min="0" step="1" placeholder="0" aria-label="Mã 1" value="' + (item.code1 !== undefined && item.code1 !== null ? item.code1 : "") + '"></td>' +
+                '<td><input type="number" inputmode="decimal" class="form-control duck-input duck-code" min="0" step="1" placeholder="0" aria-label="Mã 2" value="' + (item.code2 !== undefined && item.code2 !== null ? item.code2 : "") + '"></td>' +
+                '<td><input type="number" inputmode="decimal" class="form-control duck-input duck-code" min="0" step="1" placeholder="0" aria-label="Mã 3" value="' + (item.code3 !== undefined && item.code3 !== null ? item.code3 : "") + '"></td>' +
+                '<td><input type="number" inputmode="decimal" class="form-control duck-input duck-code" min="0" step="1" placeholder="0" aria-label="Mã 4" value="' + (item.code4 !== undefined && item.code4 !== null ? item.code4 : "") + '"></td>' +
+                '<td><input type="number" inputmode="decimal" class="form-control duck-input duck-code" min="0" step="1" placeholder="0" aria-label="Mã 5" value="' + (item.code5 !== undefined && item.code5 !== null ? item.code5 : "") + '"></td>' +
                 '<td class="duck-row__weight">0</td>' +
                 '<td class="duck-row__ducks">0</td>' +
                 '<td class="duck-row__average">0</td>';

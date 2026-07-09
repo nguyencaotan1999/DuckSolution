@@ -79,13 +79,13 @@
 
     function createRow(row) {
         var tableRow = document.createElement("tr");
-        var boxNumber = row && Number.isFinite(Number(row.boxNubmer)) ? Number(row.boxNubmer) : 0;
-        var boxWeight = row && Number.isFinite(Number(row.boxWeight)) ? Number(row.boxWeight) : 0;
+        var boxNumber = row && Number.isFinite(Number(row.boxNubmer)) ? Number(row.boxNubmer) : "";
+        var boxWeight = row && Number.isFinite(Number(row.boxWeight)) ? Number(row.boxWeight) : "";
 
         tableRow.innerHTML =
             '<td class="box-row__index"></td>' +
-            '<td><input type="number" class="form-control box-input box-number" min="0" step="1" value="' + boxNumber + '"></td>' +
-            '<td><input type="number" class="form-control box-input box-weight" min="0" step="any" value="' + boxWeight + '"></td>' +
+            '<td><input type="number" inputmode="decimal" class="form-control box-input box-number" min="0" step="1" value="' + boxNumber + '"></td>' +
+            '<td><input type="number" inputmode="decimal" class="form-control box-input box-weight" min="0" step="any" value="' + boxWeight + '"></td>' +
             '<td><button type="button" class="btn btn-sm btn-outline-danger box-row__remove" aria-label="Xóa dòng" title="Xóa dòng"><i class="bi bi-trash"></i></button></td>';
 
         return tableRow;

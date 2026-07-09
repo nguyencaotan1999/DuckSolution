@@ -18,7 +18,7 @@
             </div>
             <div class="col-6">
                 <div id="rowheaderbtn" class="row">
-                    <div class="col-6"><input id="orderCodeDuckPage" class="form-control" type="text" name="name" value="" placeholder="Nhập mã đơn hàng....." maxlength="15" autocomplete="off" /></div>
+                    <div class="col-6"><input id="orderCodeDuckPage" inputmode="decimal" class="form-control" type="text" name="name" value="" placeholder="Nhập mã đơn hàng....." maxlength="15" autocomplete="off" /></div>
                     <div class="col-6 fetchDataBtnDuck"><input id="fetchDataBtnDuckPage" class="btn btn-primary" type="button" value="Lấy dữ liệu" /></div>
                 </div>
             </div>
@@ -31,11 +31,13 @@
         <div class="row g-3">
             <div class="col-12 col-sm-6 col-lg-4">
                 <label for="ducksPerCage" class="duck-params__label">Số con vịt trong lồng</label>
-                <input id="ducksPerCage" class="form-control" type="number" min="0" step="1" value="" placeholder="0" />
+                <input id="ducksPerCage"
+                       inputmode="decimal"
+                       class="form-control" type="number" min="0" step="1" value="" placeholder="0" />
             </div>
             <div class="col-12 col-sm-6 col-lg-4">
                 <label for="cagesPerWeighing" class="duck-params__label">Số lồng 1 lần cân</label>
-                <input id="cagesPerWeighing" class="form-control" type="number" min="0" step="1" value="" placeholder="0" />
+                <input id="cagesPerWeighing" inputmode="decimal" class="form-control" type="number" min="0" step="1" value="" placeholder="0" />
             </div>
             <div class="col-12 col-sm-6 col-lg-4">
                 <label for="totalBoxKg" class="duck-params__label">Tổng số ký Lồng</label>
@@ -102,11 +104,11 @@
         <div class="row g-3">
             <div class="col-12 col-sm-6 col-lg-4">
                 <label for="ducksPerCage" class="duck-params__label">Số vịt trừ</label>
-                <input id="someInput1" class="form-control" type="number" placeholder="Nhập số vịt muốn trừ..." />
+                <input id="someInput1" inputmode="decimal" class="form-control" type="number" placeholder="Nhập số vịt muốn trừ..." />
             </div>
             <div class="col-12 col-sm-6 col-lg-4">
                 <label for="cagesPerWeighing" class="duck-params__label">Giá vịt xuất</label>
-                <input id="someInput2" class="form-control" type="number" placeholder="Nhập số tiền..." />
+                <input id="someInput2" inputmode="decimal" class="form-control" type="number" placeholder="Nhập số tiền..." />
             </div>
             <div class="col-12 col-sm-6 col-lg-4">
                 <label for="totalBoxKg" class="duck-params__label">Số ký Vịt trung bình (Kg)</label>
