@@ -41,7 +41,7 @@
             </div>
             <div class="col-12 col-sm-6 col-lg-4">
                 <label for="totalBoxKg" class="duck-params__label">Tổng số ký Lồng</label>
-                <input id="totalBoxKg" class="form-control" type="number" min="0" step="1" value="0" placeholder="0" disabled  />
+                <input id="totalBoxKg" class="form-control" type="number" min="0" step="1" value="0" placeholder="0" disabled />
             </div>
         </div>
     </div>
@@ -59,15 +59,15 @@
             <div class="duck-table-wrap">
                 <table class="table table-bordered table-hover duck-table mb-0">
                     <thead>
-                        <tr >
-                            <th scope="col" >STT</th>
+                        <tr>
+                            <th scope="col">STT</th>
                             <th scope="col" style="width:12%">Mã 1</th>
                             <th scope="col" style="width:12%">Mã 2</th>
                             <th scope="col" style="width:12%">Mã 3</th>
                             <th scope="col" style="width:12%">Mã 4</th>
                             <th scope="col" style="width:12%">Mã 5</th>
-                            <th scope="col" >Tổng ký 5 mã (kg)</th>
-                            <th scope="col" >Tổng số vịt 5 mã</th>
+                            <th scope="col">Tổng ký 5 mã (kg)</th>
+                            <th scope="col">Tổng số vịt 5 mã</th>
                             <th scope="col">Tỉ lệ trung bình (Kg)</th>
                         </tr>
                     </thead>
@@ -82,7 +82,7 @@
                 <h2 class="duck-summary__title">Tổng kết</h2>
 
                 <div class="duck-summary__field">
-                    <label for="totalWeight" class="duck-summary__label">Tổng số ký (Kg)</label>
+                    <label for="totalWeight" class="duck-summary__label">Tổng số ký Vịt (Kg)</label>
                     <input id="totalWeight" class="form-control duck-summary__value" type="number" value="0" readonly />
                 </div>
 
@@ -112,10 +112,23 @@
             </div>
             <div class="col-12 col-sm-6 col-lg-4">
                 <label for="totalBoxKg" class="duck-params__label">Số ký Vịt trung bình (Kg)</label>
-                <input id="someInput3" class="form-control" type="text" value="0"  disabled/>
+                <input id="someInput3" class="form-control" type="text" value="0" disabled />
             </div>
         </div>
     </div>
+
+    <div class="duck-params mt-2">
+        <div class="row g-3">
+            <div class="col-12 col-sm-6 col-lg-4">
+                    <input id="idbtnsumcost" type="button" class="btn btn-warning mt-4" value="Tính Tiền" />
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4">
+                <label for="cagesPerWeighing" class="duck-params__label">Thành Tiền = (Tổng số ký Vịt - số ký Lồng) * Giá vịt xuất </label>
+                    <input id="idsumcost" class="form-control" type="text" disabled />            
+            </div>
+        </div>
+        
+    </>
 
 </div>
 

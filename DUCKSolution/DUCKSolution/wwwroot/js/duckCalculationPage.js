@@ -80,6 +80,58 @@
         input.dispatchEvent(new Event("input", { bubbles: true }));
     }
 
+    function toNumberOrZero(value) {
+        var num = Number(value);
+        return Number.isFinite(num) ? num : 0;
+    }
+
+    function parseNumberOrZero(id) {
+        var raw = getValue(id);
+        if (raw === "") {
+            return 0;
+        }
+        return toNumberOrZero(raw);
+    }
+
+    function setTotalCostValue(value) {
+        var sumCostEl = byId("idsumcost") || byId("idsum");
+        if (!sumCostEl) {
+            return;
+        }
+
+        var numericValue = Number(value) || 0;
+
+        sumCostEl.value = numericValue.toLocaleString("vi-VN") + " VNĐ";
+        sumCostEl.dispatchEvent(new Event("input", { bubbles: true }));
+    }
+
+    function calculateTotalCost() {
+        var totalWeight = parseNumberOrZero("totalWeight");
+        var totalBoxKg = parseNumberOrZero(IDS.boxWeight);
+        var someInput2 = parseNumberOrZero(IDS.currency);
+
+        var totalCost = (totalWeight - totalBoxKg) * someInput2;
+        if (!Number.isFinite(totalCost)) {
+            totalCost = 0;
+        }
+
+        setTotalCostValue(totalCost);
+    }
+
+    function bindClickOnce(button, handler, bindFlagKey) {
+        if (!button) {
+            return;
+        }
+
+        var key = bindFlagKey || "clickBound";
+        if (button.dataset[key] === "true") {
+            return;
+        }
+
+        button.addEventListener("click", handler);
+        button.dataset[key] = "true";
+    }
+
     // Parse a numeric field; returns null when empty, NaN when invalid.
     function parseNumber(id) {
         var raw = getValue(id);
@@ -339,7 +391,7 @@
     }
 
     function populateFormData(data) {
-        setValue(IDS.totalDuckinBox, data.totalDuckinBox === 0 ? "" : totalDuckinBox);
+        setValue(IDS.totalDuckinBox, data.totalDuckinBox === 0 ? "" : data.totalDuckinBox);
         setValue(IDS.totalBoxInOneTime, data.totalBoxInOneTime === 0 ? "" : data.totalBoxInOneTime);
         var boxWeight = data.boxWeight;
         if (boxWeight === undefined || boxWeight === null) {
@@ -348,7 +400,7 @@
         if (boxWeight === undefined || boxWeight === null) {
             boxWeight = data.totalBoxKg;
         }
-        setValue(IDS.boxWeight, boxWeight);
+        setValue(IDS.boxWeight, data.boxWeight);
         setValue(IDS.decreaseDuck, data.decreaseDuck === 0 ? "" : data.decreaseDuck);
         setValue(IDS.currency, data.currency === 0 ? "" : data.currency);
         setCodeValue(0, data.code1 === 0 ? "" : data.code1);
@@ -539,6 +591,10 @@
         var fetchBtn = byId(IDS.fetchBtn);
         var saveBtn = byId(IDS.saveBtn);
         var orderCode = byId(IDS.orderCode);
+        var sumCostBtn = byId("idbtnsumcost");
+        if (!sumCostBtn) {
+            sumCostBtn = document.querySelector('.duck-params .btn.btn-warning');
+        }
 
         // Only wire up on the Duck page.
         if (!fetchBtn && !saveBtn) {
@@ -551,6 +607,7 @@
         if (saveBtn) {
             saveBtn.addEventListener("click", saveData);
         }
+        bindClickOnce(sumCostBtn, calculateTotalCost, "sumCostClickBound");
         if (orderCode) {
             orderCode.addEventListener("keydown", function (e) {
                 if (e.key === "Enter") {

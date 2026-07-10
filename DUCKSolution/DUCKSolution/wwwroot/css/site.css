@@ -25,7 +25,19 @@
     max-width: 440px;
     border: none;
     border-radius: 16px;
+    background: linear-gradient(135deg, #999999 0%, #CC99FF 100%);
+    justify-content: center;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+    padding: 1.15rem;
+    flex-direction: column;
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
 }
+
+    .auth-card:hover,
+    .auth-card:focus-within {
+        transform: translateY(-8px);
+        box-shadow: 0 18px 34px #d09300;
+    }
 
 html,
 body {

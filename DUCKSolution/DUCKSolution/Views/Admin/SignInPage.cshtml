@@ -5,7 +5,10 @@
 
 <div class="auth-page d-flex justify-content-center align-items-start py-5">
     <div class="card shadow-sm auth-card">
-        <div class="card-body p-4 p-md-5">
+        <div class="row mb-4" style="width:100%; height:auto; justify-content:center">
+            <img src="~/img/icon/duck.png" class="duck-icon mt-4" alt="Duck Icon" style="width:25%" />
+        </div>
+        <div class="card-body p-4 p-md-5" style="margin-top:0px !important">
             <h1 class="h4 fw-bold text-center mb-4">Đăng nhập</h1>
 
             @if (TempData["SignUpSuccess"] != null)

@@ -322,7 +322,7 @@ var DuckCalculation;
                 codeCells += `
                 <td>
                     <input type="number" class="form-control duck-input duck-code"
-                           min="0" step="1" placeholder="0" aria-label="Mã ${i}" />
+                           min="0" step="1" inputmode="decimal" placeholder="0" aria-label="Mã ${i}" />
                 </td>`;
             }
             row.innerHTML = `
@@ -433,12 +433,12 @@ var CageCalculation;
             row.innerHTML = `
                 <td class="cage-row__index">${index}</td>
                 <td>
-                    <input type="number" class="form-control cage-input cage-cage-number"
+                    <input type="number" class="form-control inputmode="decimal" cage-input cage-cage-number"
                            min="0" step="1" placeholder="0" aria-label="Cage number"  />
                 </td>
                 <td>
                     <input type="number" class="form-control cage-input cage-weight"
-                           min="0" step="any" placeholder="0" aria-label="Weight"/>
+                           min="0" step="any" placeholder="0" inputmode="decimal" aria-label="Weight"/>
                 </td>
                 <td>
                     <button type="button" class="btn btn-outline-danger cage-row__remove"
