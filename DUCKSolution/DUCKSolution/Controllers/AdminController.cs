@@ -200,6 +200,11 @@ namespace DUCKSolution.Controllers
                 .Select(b => new
                 {
                     stt = b.STT,
+                    boxCode1 = b.BoxCode1,
+                    boxCode2 = b.BoxCode2,
+                    boxCode3 = b.BoxCode3,
+                    boxCode4 = b.BoxCode4,
+                    boxCode5 = b.BoxCode5,
                     boxNubmer = b.BoxNubmer,
                     boxWeight = b.BoxWeight
                 })
@@ -209,6 +214,7 @@ namespace DUCKSolution.Controllers
             {
                 success = true,
                 message = $"Đã tải dữ liệu cho đơn hàng \"{orderCode}\".",
+                totalBoxInOneTime = order.totalBoxInOneTime,
                 totalBox = order.totalBox,
                 totalBoxKg = order.totalBoxKg,
                 boxes
@@ -231,9 +237,19 @@ namespace DUCKSolution.Controllers
 
             var orderCode = model.OrderCode.Trim();
             var rows = model.Rows ?? new List<BoxRowViewModel>();
+            var totalBoxInOneTime = Math.Max(model.TotalBoxInOneTime, 0);
 
             foreach (var row in rows)
             {
+                if (row.BoxCode1 < 0 ||
+                    row.BoxCode2 < 0 ||
+                    row.BoxCode3 < 0 ||
+                    row.BoxCode4 < 0 ||
+                    row.BoxCode5 < 0)
+                {
+                    return Json(new { success = false, message = "Dữ liệu Mã 1-5 không hợp lệ." });
+                }
+
                 if (row.BoxNubmer < 0 || row.BoxWeight < 0)
                 {
                     return Json(new { success = false, message = "Giá trị Số Lồng / Số Ký không được âm." });
@@ -271,19 +287,39 @@ namespace DUCKSolution.Controllers
                 int totalBox = 0;
                 decimal totalBoxKg = 0m;
 
+                order.totalBoxInOneTime = totalBoxInOneTime;
+
                 foreach (var row in rows)
                 {
+                    // Server-side safety: recalculate from Code 1..5 with boxnumberId multiplier.
+                    var rowCodes = new[]
+                    {
+                        row.BoxCode1,
+                        row.BoxCode2,
+                        row.BoxCode3,
+                        row.BoxCode4,
+                        row.BoxCode5
+                    };
+                    var rowTotalWeight = rowCodes.Sum();
+                    var nonZeroCodeCount = rowCodes.Count(code => code != 0);
+                    var rowTotalBox = nonZeroCodeCount * totalBoxInOneTime;
+
                     _context.Boxes.Add(new Box
                     {
                         STT = stt++,
-                        BoxNubmer = row.BoxNubmer,
-                        BoxWeight = row.BoxWeight,
+                        BoxCode1 = row.BoxCode1,
+                        BoxCode2 = row.BoxCode2,
+                        BoxCode3 = row.BoxCode3,
+                        BoxCode4 = row.BoxCode4,
+                        BoxCode5 = row.BoxCode5,
+                        BoxNubmer = rowTotalBox,
+                        BoxWeight = rowTotalWeight,
                         OrderCode = orderCode,
                         UserID = model.UserId
                     });
 
-                    totalBox += row.BoxNubmer;
-                    totalBoxKg += row.BoxWeight;
+                    totalBox += rowTotalBox;
+                    totalBoxKg += rowTotalWeight;
                 }
 
                 order.totalBox = totalBox;

@@ -14,6 +14,9 @@ namespace DUCKSolution.ViewModels
         [StringLength(30, ErrorMessage = "Mã đơn hàng tối đa 30 ký tự.")]
         public string OrderCode { get; set; } = string.Empty;
 
+        [Range(0, int.MaxValue, ErrorMessage = "Số lồng 1 lần cân không hợp lệ.")]
+        public int TotalBoxInOneTime { get; set; }
+
         public List<BoxRowViewModel> Rows { get; set; } = new();
     }
 
@@ -23,6 +26,21 @@ namespace DUCKSolution.ViewModels
     public class BoxRowViewModel
     {
         public int STT { get; set; }
+
+        [Range(0, int.MaxValue, ErrorMessage = "Mã 1 không hợp lệ.")]
+        public int BoxCode1 { get; set; }
+
+        [Range(0, int.MaxValue, ErrorMessage = "Mã 2 không hợp lệ.")]
+        public int BoxCode2 { get; set; }
+
+        [Range(0, int.MaxValue, ErrorMessage = "Mã 3 không hợp lệ.")]
+        public int BoxCode3 { get; set; }
+
+        [Range(0, int.MaxValue, ErrorMessage = "Mã 4 không hợp lệ.")]
+        public int BoxCode4 { get; set; }
+
+        [Range(0, int.MaxValue, ErrorMessage = "Mã 5 không hợp lệ.")]
+        public int BoxCode5 { get; set; }
 
         [Range(0, int.MaxValue, ErrorMessage = "Số Lồng không hợp lệ.")]
         public int BoxNubmer { get; set; }

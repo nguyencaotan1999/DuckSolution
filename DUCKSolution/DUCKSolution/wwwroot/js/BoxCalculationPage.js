@@ -25,6 +25,7 @@
             page: document.querySelector(".cage-page"),
             panel: byId("boxPanel"),
             tableBody: byId("boxTableBody"),
+            boxNumberPerScale: byId("boxnumberId"),
             orderCode: byId("orderCode"),
             fetchBtn: byId("fetchDataBtn"),
             addRowBtn: byId("boxAddRowBtn"),
@@ -77,18 +78,87 @@
         return helper.getOrderCode("orderCode");
     }
 
+    function getBoxNumberPerScale() {
+        if (!elements || !elements.boxNumberPerScale) {
+            return 0;
+        }
+
+        var value = validation.normalizeNumber(elements.boxNumberPerScale.value);
+        if (!Number.isFinite(value) || value <= 0) {
+            return 0;
+        }
+
+        return Math.floor(value);
+    }
+
     function createRow(row) {
         var tableRow = document.createElement("tr");
-        var boxNumber = row && Number.isFinite(Number(row.boxNubmer)) && row.boxNubmer !== 0 ? Number(row.boxNubmer) : "";
-        var boxWeight = row && Number.isFinite(Number(row.boxWeight)) && row.boxWeight !== 0 ? Number(row.boxWeight) : "";
+        var code1 = row && Number.isFinite(Number(row.boxCode1)) && Number(row.boxCode1) !== 0 ? Number(row.boxCode1) : "";
+        var code2 = row && Number.isFinite(Number(row.boxCode2)) && Number(row.boxCode2) !== 0 ? Number(row.boxCode2) : "";
+        var code3 = row && Number.isFinite(Number(row.boxCode3)) && Number(row.boxCode3) !== 0 ? Number(row.boxCode3) : "";
+        var code4 = row && Number.isFinite(Number(row.boxCode4)) && Number(row.boxCode4) !== 0 ? Number(row.boxCode4) : "";
+        var code5 = row && Number.isFinite(Number(row.boxCode5)) && Number(row.boxCode5) !== 0 ? Number(row.boxCode5) : "";
+        var rowTotalWeight = row && Number.isFinite(Number(row.boxWeight)) ? Number(row.boxWeight) : 0;
+        var rowTotalBox = row && Number.isFinite(Number(row.boxNubmer)) ? Number(row.boxNubmer) : 0;
 
         tableRow.innerHTML =
             '<td class="box-row__index"></td>' +
-            '<td><input type="number" inputmode="decimal" class="form-control box-input box-number" min="0" step="1" value="' + boxNumber + '"></td>' +
-            '<td><input type="number" inputmode="decimal" class="form-control box-input box-weight" min="0" step="any" value="' + boxWeight + '"></td>' +
+            '<td><input type="number" inputmode="decimal" class="form-control box-input box-code box-code-1" min="0" step="1" value="' + code1 + '"></td>' +
+            '<td><input type="number" inputmode="decimal" class="form-control box-input box-code box-code-2" min="0" step="1" value="' + code2 + '"></td>' +
+            '<td><input type="number" inputmode="decimal" class="form-control box-input box-code box-code-3" min="0" step="1" value="' + code3 + '"></td>' +
+            '<td><input type="number" inputmode="decimal" class="form-control box-input box-code box-code-4" min="0" step="1" value="' + code4 + '"></td>' +
+            '<td><input type="number" inputmode="decimal" class="form-control box-input box-code box-code-5" min="0" step="1" value="' + code5 + '"></td>' +
+            '<td class="box-row__weight">' + formatTotal(rowTotalWeight) + '</td>' +
+            '<td class="box-row__number">' + formatTotal(rowTotalBox) + '</td>' +
             '<td><button type="button" class="btn btn-sm btn-outline-danger box-row__remove" aria-label="Xóa dòng" title="Xóa dòng"><i class="bi bi-trash"></i></button></td>';
 
         return tableRow;
+    }
+
+    function getCodeInputs(tableRow) {
+        if (!tableRow) {
+            return [];
+        }
+
+        return Array.prototype.slice.call(tableRow.querySelectorAll(".box-code"));
+    }
+
+    // Calculate row totals from Code 1..5 and apply the boxnumberId multiplier for cages.
+    function calculateRowTotals(tableRow) {
+        var totalWeight = 0;
+        var nonZeroCount = 0;
+
+        getCodeInputs(tableRow).forEach(function (input) {
+            var raw = input && input.value !== undefined && input.value !== null ? String(input.value).trim() : "";
+            var numericValue = Number(raw);
+            var isValidNumber = raw !== "" && Number.isFinite(numericValue);
+
+            if (!isValidNumber) {
+                return;
+            }
+
+            totalWeight += numericValue;
+            if (numericValue !== 0) {
+                nonZeroCount += 1;
+            }
+        });
+
+        var totalBox = nonZeroCount * getBoxNumberPerScale();
+
+        var totalWeightCell = tableRow ? tableRow.querySelector(".box-row__weight") : null;
+        if (totalWeightCell) {
+            totalWeightCell.textContent = formatTotal(totalWeight);
+        }
+
+        var totalBoxCell = tableRow ? tableRow.querySelector(".box-row__number") : null;
+        if (totalBoxCell) {
+            totalBoxCell.textContent = formatTotal(totalBox);
+        }
+
+        return {
+            totalWeight: totalWeight,
+            totalBox: totalBox
+        };
     }
 
     function showPanel() {
@@ -105,17 +175,22 @@
         }
 
         elements.tableBody.querySelectorAll("tr").forEach(function (tableRow, index) {
-            var numberInput = tableRow.querySelector(".box-number");
-            var weightInput = tableRow.querySelector(".box-weight");
-
-            if (!numberInput || !weightInput) {
+            var codeInputs = getCodeInputs(tableRow);
+            if (codeInputs.length < 5) {
                 return;
             }
 
+            var rowTotals = calculateRowTotals(tableRow);
+
             rows.push({
                 stt: index + 1,
-                boxNubmer: validation.parseInputValue(numberInput),
-                boxWeight: validation.parseInputValue(weightInput)
+                boxCode1: validation.parseInputValue(codeInputs[0]),
+                boxCode2: validation.parseInputValue(codeInputs[1]),
+                boxCode3: validation.parseInputValue(codeInputs[2]),
+                boxCode4: validation.parseInputValue(codeInputs[3]),
+                boxCode5: validation.parseInputValue(codeInputs[4]),
+                boxNubmer: validation.normalizeNumber(rowTotals.totalBox),
+                boxWeight: validation.normalizeNumber(rowTotals.totalWeight)
             });
         });
 
@@ -139,13 +214,17 @@
     }
 
     function recalculateTotals() {
-        var rows = readRows();
         var totalBox = 0;
         var totalBoxKg = 0;
 
-        rows.forEach(function (row) {
-            totalBox += validation.normalizeNumber(row.boxNubmer);
-            totalBoxKg += validation.normalizeNumber(row.boxWeight);
+        if (!elements.tableBody) {
+            return;
+        }
+
+        elements.tableBody.querySelectorAll("tr").forEach(function (tableRow) {
+            var rowTotals = calculateRowTotals(tableRow);
+            totalBox += validation.normalizeNumber(rowTotals.totalBox);
+            totalBoxKg += validation.normalizeNumber(rowTotals.totalWeight);
         });
 
         if (elements.totalBox) {
@@ -175,7 +254,7 @@
         elements.tableBody.innerHTML = "";
 
         if (!rows || rows.length === 0) {
-            appendRow({ boxNubmer: 0, boxWeight: 0 });
+            appendRow({ boxCode1: 0, boxCode2: 0, boxCode3: 0, boxCode4: 0, boxCode5: 0, boxNubmer: 0, boxWeight: 0 });
         } else {
             rows.forEach(function (row) {
                 elements.tableBody.appendChild(createRow(row));
@@ -192,6 +271,7 @@
             orderCode: orderCode,
             totalBox: elements.totalBox ? elements.totalBox.value : "0",
             totalBoxKg: elements.totalBoxKg ? elements.totalBoxKg.value : "0",
+            totalBoxInOneTime: getBoxNumberPerScale(),
             rows: readRows(),
             updatedAt: new Date().toISOString()
         };
@@ -204,6 +284,10 @@
         }
 
         renderRows(data.rows || []);
+        if (elements.boxNumberPerScale && data.totalBoxInOneTime !== undefined && data.totalBoxInOneTime !== null) {
+            elements.boxNumberPerScale.value = validation.normalizeNumber(data.totalBoxInOneTime) || "";
+        }
+        recalculateTotals();
         setStatus("Đã khôi phục bản nháp localStorage.", "success");
 
         if (!options || options.showToast !== false) {
@@ -260,6 +344,12 @@
 
                 renderRows(result.boxes || []);
 
+                if (elements.boxNumberPerScale && typeof result.totalBoxInOneTime === "number") {
+                    elements.boxNumberPerScale.value = result.totalBoxInOneTime === 0 ? "" : String(result.totalBoxInOneTime);
+                }
+
+                recalculateTotals();
+
                 if (elements.totalBox && typeof result.totalBox === "number") {
                     elements.totalBox.value = formatTotal(result.totalBox);
                 }
@@ -286,6 +376,11 @@
     async function handleSave() {
         var orderCode = getOrderCode();
         var orderCheck = validation.validateOrderCode(orderCode);
+        if (!orderCheck.isValid) {
+            setStatus(orderCheck.message, "warning");
+            window.showWarningToast(orderCheck.message);
+            return;
+        }
 
         var rows = readRows();
         var validationResult = service.validateBeforeSave(orderCode, rows);
@@ -297,13 +392,9 @@
         }
         showLoading();
         setButtonLoading(elements.saveBtn, true, "Đang lưu...");
+        recalculateTotals();
+        rows = readRows();
         service.setLastOrder(pageState.userId, orderCode);
-
-        if (!orderCheck.isValid) {
-            setStatus(orderCheck.message, "warning");
-            window.showWarningToast(orderCheck.message);
-            return;
-        }
         var CheckCodeExisting = await service.loadOrderData(pageState.userId, orderCheck.value)
             .then(function (result) {
                 if (!result.success) {
@@ -318,7 +409,7 @@
             });
 
         if (CheckCodeExisting) {
-            await service.saveOrderData(pageState.userId, orderCode, rows)
+            await service.saveOrderData(pageState.userId, orderCode, rows, getBoxNumberPerScale())
                 .then(function (result) {
                     if (!result.success) {
                         setStatus(result.message, "error");
@@ -362,12 +453,12 @@
             return;
         }
 
-        if (target.classList.contains("box-number")) {
-            validation.trimInputLength(target, validation.boxNumberMaxDigits);
-        }
-
-        if (target.classList.contains("box-weight")) {
+        if (target.classList.contains("box-code")) {
             validation.trimInputLength(target, validation.boxWeightMaxDigits);
+            var row = target.closest("tr");
+            if (row) {
+                calculateRowTotals(row);
+            }
         }
 
         recalculateTotals();
@@ -386,7 +477,7 @@
         }
 
         if (elements.tableBody && elements.tableBody.rows.length === 0) {
-            appendRow({ boxNubmer: 0, boxWeight: 0 });
+            appendRow({ boxCode1: 0, boxCode2: 0, boxCode3: 0, boxCode4: 0, boxCode5: 0, boxNubmer: 0, boxWeight: 0 });
             return;
         }
 
@@ -415,11 +506,27 @@
         if (elements.addRowBtn) {
             elements.addRowBtn.addEventListener("click", function () {
                 try {
-                    appendRow({ boxNubmer: 0, boxWeight: 0 });
+                    appendRow({ boxCode1: 0, boxCode2: 0, boxCode3: 0, boxCode4: 0, boxCode5: 0, boxNubmer: 0, boxWeight: 0 });
                     showPanel();
                 } catch (error) {
                     handleUnexpectedError("addRow", error);
                 }
+            });
+        }
+
+        if (elements.boxNumberPerScale) {
+            elements.boxNumberPerScale.addEventListener("input", function (event) {
+                var input = event.target;
+                if (input instanceof HTMLInputElement) {
+                    validation.trimInputLength(input, validation.boxNumberMaxDigits);
+                }
+                recalculateTotals();
+                queueAutosave();
+            });
+
+            elements.boxNumberPerScale.addEventListener("change", function () {
+                recalculateTotals();
+                queueAutosave();
             });
         }
 
@@ -454,6 +561,7 @@
 
         if (elements.tableBody) {
             elements.tableBody.addEventListener("input", onTableInput);
+            elements.tableBody.addEventListener("change", onTableInput);
             elements.tableBody.addEventListener("click", onTableClick);
         }
 

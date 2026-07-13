@@ -86,12 +86,13 @@
                     boxes: data && Array.isArray(data.boxes) ? data.boxes : [],
                     totalBox: data ? data.totalBox : 0,
                     totalBoxKg: data ? data.totalBoxKg : 0,
+                    totalBoxInOneTime: data ? data.totalBoxInOneTime : 0,
                     raw: data
                 };
             });
     }
 
-    function saveOrderData(userId, orderCode, rows) {
+    function saveOrderData(userId, orderCode, rows, totalBoxInOneTime) {
         return fetch("/Admin/SaveBoxData", {
             method: "POST",
             headers: {
@@ -102,6 +103,7 @@
             body: JSON.stringify({
                 userId: userId,
                 orderCode: orderCode,
+                totalBoxInOneTime: totalBoxInOneTime,
                 rows: rows
             })
         })

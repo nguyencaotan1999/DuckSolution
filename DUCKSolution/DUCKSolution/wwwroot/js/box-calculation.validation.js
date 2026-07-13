@@ -61,13 +61,37 @@
 
         for (var index = 0; index < rows.length; index += 1) {
             var row = rows[index] || {};
+            var codeValues = [
+                normalizeNumber(row.boxCode1),
+                normalizeNumber(row.boxCode2),
+                normalizeNumber(row.boxCode3),
+                normalizeNumber(row.boxCode4),
+                normalizeNumber(row.boxCode5)
+            ];
+
+            for (var codeIndex = 0; codeIndex < codeValues.length; codeIndex += 1) {
+                if (!Number.isFinite(codeValues[codeIndex])) {
+                    return {
+                        isValid: false,
+                        message: "Mã 1-5 phải là số hợp lệ."
+                    };
+                }
+
+                if (codeValues[codeIndex] < 0) {
+                    return {
+                        isValid: false,
+                        message: "Giá trị Mã 1-5 không được âm."
+                    };
+                }
+            }
+
             var boxNumber = normalizeNumber(row.boxNubmer);
             var boxWeight = normalizeNumber(row.boxWeight);
 
             if (!Number.isFinite(boxNumber) || !Number.isFinite(boxWeight)) {
                 return {
                     isValid: false,
-                    message: "Số Lồng và Số Ký phải là số hợp lệ."
+                    message: "Tổng Số Lồng và Tổng Số Ký phải là số hợp lệ."
                 };
             }
 
