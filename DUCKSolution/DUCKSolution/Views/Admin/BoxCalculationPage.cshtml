@@ -68,6 +68,16 @@
     
     @* Hidden until a successful fetch; box-calculation.ts toggles d-none. *@
     <div id="boxPanel" class="row g-4 d-none">
+        <div class="duck-params" >
+            <div class="row g-3" style="justify-content:right">
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <label for="ducksPerCage" class="duck-params__label">Nhập số lồng 1 lần cân</label>
+                    <input id="boxnumberId"
+                           inputmode="decimal"
+                           class="form-control" type="number" min="0" step="1" value="" placeholder="0" />
+                </div>
+            </div>
+        </div>
         <div class="col-12 col-lg-8">
             <div class="cage-toolbar">
                 <button id="boxAddRowBtn" class="btn btn-primary" type="button">
@@ -81,8 +91,13 @@
                     <thead>
                         <tr>
                             <th class="cage-col-no" scope="col">STT</th>
-                            <th scope="col">Số Lồng</th>
-                            <th scope="col">Số Ký</th>
+                            <th scope="col">Mã 1</th>
+                            <th scope="col">Mã 2</th>
+                            <th scope="col">Mã 3</th>
+                            <th scope="col">Mã 4</th>
+                            <th scope="col">Mã 5</th>
+                            <th scope="col">Tổng Số Ký 5 lần cân</th>
+                            <th scope="col">Tổng Số Lồng 5 lần cân</th>
                             <th class="cage-col-action" scope="col"></th>
                         </tr>
                     </thead>
