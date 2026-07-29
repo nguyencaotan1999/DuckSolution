@@ -12,6 +12,8 @@
     var FETCH_URL = "/Admin/GetDuckData";
     var SAVE_URL = "/Admin/SaveDuckData";
     var boxweightValue = 0;
+    var totalBoxweightDraft = 0;
+    var isboxweightDraft = false;
 
     // ---- Element ids (mapped to their model fields) ----
     var IDS = {
@@ -120,6 +122,13 @@
     }
     function Decreasetotalbox() {
         var totalBoxweight = boxweightValue;
+        if (totalBoxweight == 0) {
+            if (isboxweightDraft == false) {
+                totalBoxweightDraft = document.getElementById("totalBoxKg").value;
+                isboxweightDraft = true;
+            }
+            totalBoxweight = totalBoxweightDraft;
+        }
         var decreaseboxvalue = document.getElementById("someInput1").value;
         if (decreaseboxvalue === null) {
             document.getElementById("totalBoxKg").value = totalBoxweight;
