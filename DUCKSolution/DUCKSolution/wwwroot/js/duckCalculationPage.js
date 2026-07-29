@@ -11,6 +11,7 @@
     // ---- Endpoints ----
     var FETCH_URL = "/Admin/GetDuckData";
     var SAVE_URL = "/Admin/SaveDuckData";
+    var boxweightValue = 0;
 
     // ---- Element ids (mapped to their model fields) ----
     var IDS = {
@@ -116,6 +117,21 @@
         }
 
         setTotalCostValue(totalCost);
+    }
+    function Decreasetotalbox() {
+        var totalBoxweight = boxweightValue;
+        var decreaseboxvalue = document.getElementById("someInput1").value;
+        if (decreaseboxvalue === null) {
+            document.getElementById("totalBoxKg").value = totalBoxweight;
+            return;
+        }
+        var calculatedValue = totalBoxweight - decreaseboxvalue;
+        if (calculatedValue < 0) {
+            document.getElementById("totalBoxKg").value = 0;
+                        return;
+        }
+        document.getElementById("totalBoxKg").value = calculatedValue;
+        
     }
 
     function bindClickOnce(button, handler, bindFlagKey) {
@@ -395,11 +411,12 @@
         setValue(IDS.totalBoxInOneTime, data.totalBoxInOneTime === 0 ? "" : data.totalBoxInOneTime);
         var boxWeight = data.boxWeight;
         if (boxWeight === undefined || boxWeight === null) {
-            boxWeight = data.BoxWeight;
+            boxweightValue = data.boxWeight;
         }
         if (boxWeight === undefined || boxWeight === null) {
             boxWeight = data.totalBoxKg;
         }
+        boxweightValue = boxWeight;
         setValue(IDS.boxWeight, data.boxWeight);
         setValue(IDS.decreaseDuck, data.decreaseDuck === 0 ? "" : data.decreaseDuck);
         setValue(IDS.currency, data.currency === 0 ? "" : data.currency);
@@ -591,6 +608,7 @@
         var fetchBtn = byId(IDS.fetchBtn);
         var saveBtn = byId(IDS.saveBtn);
         var orderCode = byId(IDS.orderCode);
+        var decreaseDuckInput = byId(IDS.decreaseDuck);
         var sumCostBtn = byId("idbtnsumcost");
         if (!sumCostBtn) {
             sumCostBtn = document.querySelector('.duck-params .btn.btn-warning');
@@ -600,7 +618,9 @@
         if (!fetchBtn && !saveBtn) {
             return;
         }
-
+        if (decreaseDuckInput) {
+            decreaseDuckInput.addEventListener("change", Decreasetotalbox)
+        }
         if (fetchBtn) {
             fetchBtn.addEventListener("click", fetchData);
         }
